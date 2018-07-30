@@ -41,9 +41,9 @@ public class PostData extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.form);
 
-        button=(Button)findViewById(R.id.btn_submit);
-        tvName=(EditText)findViewById(R.id.input_name);
-        tvCountry=(EditText)findViewById(R.id.input_country);
+//        button=(Button)findViewById(R.id.btn_submit);
+//        tvName=(EditText)findViewById(R.id.input_name);
+//        tvCountry=(EditText)findViewById(R.id.input_country);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
