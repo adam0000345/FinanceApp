@@ -18,7 +18,7 @@ import java.io.IOException;
 
 public class JSONparser {
 
-    private static final String MAIN_URL = "https://script.google.com/macros/s/AKfycby8YWRd0FSLVR31Zblyd021uXqILuqeog81sRuhZg/exec";
+    private static final String MAIN_URL = "https://script.google.com/macros/s/AKfycbxw1d75kBSs7cPNPI0hlUSdwUrLNpfGw0eLUKkMjQitesAa7kfz/exec";
 
     public static final String TAG = "TAG";
 

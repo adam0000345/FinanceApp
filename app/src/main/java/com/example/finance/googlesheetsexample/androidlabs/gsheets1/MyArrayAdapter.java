@@ -37,6 +37,7 @@ public class MyArrayAdapter extends ArrayAdapter<MyDataModel> {
     public View getView(int position, View convertView, ViewGroup parent) {
         final ViewHolder vh;
         if (convertView == null) {
+
             View view = mInflater.inflate(R.layout.layout_row_view, parent, false);
             vh = ViewHolder.create((RelativeLayout) view);
             view.setTag(vh);
@@ -46,10 +47,19 @@ public class MyArrayAdapter extends ArrayAdapter<MyDataModel> {
 
         MyDataModel item = getItem(position);
 
-        vh.textViewYear.setText(Integer.toString(item.getYear()));
-        vh.textViewCashFlowToEquity.setText(Integer.toString(item.getCashFlowToEquity()));
-        vh.textViewDifference.setText(Integer.toString(item.getDifference()));
-        vh.textViewCashFlowToFirm.setText(Integer.toString(item.getCashFlowToFirm()));
+        if (item.getYear() == 0) {
+            vh.textViewYear.setText("Terminal Value: " + Integer.toString(item.getYear()));
+            vh.textViewCashFlowToEquity.setText(" Terminal CashFlow To Equity: " + Integer.toString(item.getCashFlowToEquity()));
+            vh.textViewDifference.setText("TerminalDifference Between Numbers Before & After: " + Integer.toString(item.getTerminaldifference()));
+            vh.textViewCashFlowToFirm.setText("Terminal CashFlow To Firm: " + Integer.toString(item.getTerminalcftofirm()));
+
+        } else {
+
+            vh.textViewYear.setText("Year: " + Integer.toString(item.getYear()));
+            vh.textViewCashFlowToEquity.setText("CashFlow To Equity: " + Integer.toString(item.getCashFlowToEquity()));
+            vh.textViewDifference.setText("Difference Between Numbers Before & After: " + Integer.toString(item.getDifference()));
+            vh.textViewCashFlowToFirm.setText("CashFlow To Firm: " + Integer.toString(item.getCashFlowToFirm()));
+        }
 
         return vh.rootView;
     }
@@ -69,6 +79,8 @@ public class MyArrayAdapter extends ArrayAdapter<MyDataModel> {
         public final TextView textViewCashFlowToFirm;
 
         private ViewHolder(RelativeLayout rootView, TextView textViewYear, TextView textViewCashFlowToEquity, TextView textViewDifference, TextView textViewCashFlowToFirm) {
+
+
             this.rootView = rootView;
             this.textViewYear = textViewYear;
             this.textViewCashFlowToEquity = textViewCashFlowToEquity;
@@ -78,11 +90,16 @@ public class MyArrayAdapter extends ArrayAdapter<MyDataModel> {
         }
 
         public static ViewHolder create(RelativeLayout rootView) {
+
+            //textViewYear and other variables can be reflective of terminal values
+
             TextView textViewYear = (TextView) rootView.findViewById(R.id.textViewYear);
             TextView textViewCashFlowToEquity = (TextView) rootView.findViewById(R.id.textViewCashFlowToEquity);
             TextView textViewDifference = (TextView) rootView.findViewById(R.id.textViewDifference);
             TextView textViewCashFlowToFirm = (TextView) rootView.findViewById(R.id.textView2CashFlowToFirm);
             return new ViewHolder(rootView, textViewYear, textViewCashFlowToEquity, textViewDifference, textViewCashFlowToFirm);
         }
+
+
     }
 }

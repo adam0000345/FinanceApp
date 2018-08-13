@@ -1,16 +1,22 @@
 package com.example.finance.googlesheetsexample;
 
 import android.app.ProgressDialog;
+import android.media.audiofx.DynamicsProcessing;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -36,15 +42,46 @@ public class UserList extends AppCompatActivity {
     private ListView listView;
     private ArrayList<MyDataModel> list;
     private MyArrayAdapter adapter;
+    private DrawerLayout mDrawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.waitingscreentopullexceldata);
         Fresco.initialize(this);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
+        //!!!!!!!!!!!!!FORMAT THIS EVENTUALLY!!!!!!!!!!!!!!!!!!!!!
+        //Below is repeat code from the MainPage, MainPage and Userlist use
+        //the same code as below, see if there is a way to condense this
+
+        Toolbar toolbar = findViewById(R.id.toolbarz);
+        setSupportActionBar(toolbar);
+        ActionBar actionbar = getSupportActionBar();
+        actionbar.setDisplayHomeAsUpEnabled(true);
+        actionbar.setHomeAsUpIndicator(R.drawable.baseline_menu_black_18dp);
+
+
+
+        mDrawerLayout = findViewById(R.id.drawer_layout);
+
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.bringToFront();
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        // set item as selected to persist highlight
+                        menuItem.setChecked(true);
+                        // close drawer when item is tapped
+                        mDrawerLayout.closeDrawers();
+
+                        // Add code here to update the UI based on the item selected
+                        // For example, swap UI fragments here
+
+                        return true;
+                    }
+                });
 
         /**
          * Array List for Binding Data from JSON to this List
@@ -85,11 +122,16 @@ public class UserList extends AppCompatActivity {
                  */
                 if (InternetConnection.checkConnection(getApplicationContext())) {
                     new GetDataTask().execute();
+
                 } else {
                     Snackbar.make(view, "Internet Connection Not Available", Snackbar.LENGTH_LONG).show();
                 }
+
+
             }
         });
+
+
     }
 
     /**
@@ -100,6 +142,8 @@ public class UserList extends AppCompatActivity {
         ProgressDialog dialog;
         int jIndex;
         int x;
+
+
 
         @Override
         protected void onPreExecute() {
@@ -137,6 +181,8 @@ public class UserList extends AppCompatActivity {
                 if (jsonObject != null) {
                     /**
                      * Check Length...
+                     *
+                     *
                      */
                     if(jsonObject.length() > 0) {
                         /**
@@ -151,7 +197,7 @@ public class UserList extends AppCompatActivity {
 
                         int lenArray = array.length();
                         if(lenArray > 0) {
-                            for(jIndex = 0; jIndex < lenArray; jIndex++) {
+                            for(jIndex = 0; jIndex <= lenArray; jIndex++) {
 
                                 /**
                                  * Creating Every time New Object
@@ -167,10 +213,36 @@ public class UserList extends AppCompatActivity {
                                  *
                                  */
                                 JSONObject innerObject = array.getJSONObject(jIndex);
-                                int year = innerObject.getInt(Keys.KEY_YEAR);
-                                int cashflowtoequity = innerObject.getInt(Keys.KEY_CFTOEQUITY);
-                                int difference = innerObject.getInt(Keys.KEY_DIFFERENCE);
-                                int cashflowtofirm = innerObject.getInt(Keys.KEY_CFTOFIRM);
+
+                                //Log.e("MYAPP", "unexpected JSON exception", e);
+
+                                try {
+                                    int year = innerObject.getInt(Keys.KEY_YEAR);
+                                    int cashflowtoequity = innerObject.getInt(Keys.KEY_CFTOEQUITY);
+                                    int cashflowtofirm = innerObject.getInt(Keys.KEY_CFTOFIRM);
+                                    int difference = innerObject.getInt(Keys.KEY_DIFFERENCE);
+
+                                    model.setYear(year);
+                                    model.setCashFlowToEquity(cashflowtoequity);
+                                    model.setCashFlowToFirm(cashflowtofirm);
+                                    model.setDifference(difference);
+
+                                }
+                                //probably not best practice here, this can be improved
+                                catch (JSONException je) {
+                                    Log.i(JSONparser.TAG, "JSONPARSER error" + je.getLocalizedMessage());
+                                    model.flipTerminalboolean();
+
+                                    int terminalcashflowtoequity = innerObject.getInt(Keys.KEY_TERMINALCFTOEQUITY);
+                                    int terminalcashflowtofirm = innerObject.getInt(Keys.KEY_TERMINALCFTOFIRM);
+                                    int terminaldifference = innerObject.getInt(Keys.KEY_TERMINALDIFFERENCE);
+
+                                    model.setTerminalCashFlowToEquity(terminalcashflowtoequity);
+                                    model.setTerminalCashFlowToFirm(terminalcashflowtofirm);
+                                    model.setTerminaldifference(terminaldifference);
+
+                                }
+
 
                                 /**
                                  * Getting Object from Object "phone"
@@ -178,14 +250,9 @@ public class UserList extends AppCompatActivity {
                                 //JSONObject phoneObject = innerObject.getJSONObject(Keys.KEY_PHONE);
                                 //String phone = phoneObject.getString(Keys.KEY_MOBILE);
 
-                                model.setYear(year);
-                                model.setCashFlowToEquity(cashflowtoequity);
-                                model.setDifference(difference);
-                                model.setCashFlowToFirm(cashflowtofirm);
-
 
                                 /**
-                                 * Adding name and phone concatenation in List...
+                                 * Adding numeric values from excel sheet to List...
                                  */
                                 list.add(model);
                             }
@@ -195,7 +262,7 @@ public class UserList extends AppCompatActivity {
 
                 }
             } catch (JSONException je) {
-                Log.i(JSONparser.TAG, "" + je.getLocalizedMessage());
+                Log.i(JSONparser.TAG, "JSONPARSER error" + je.getLocalizedMessage());
             }
             return null;
         }
@@ -208,11 +275,56 @@ public class UserList extends AppCompatActivity {
              * Checking if List size if more than zero then
              * Update ListView
              */
+
+
             if(list.size() > 0) {
                 adapter.notifyDataSetChanged();
+                //use the fetched data for calculations here
+
+                double EquityValue = 0;
+                double ValueOfFirm = 0;
+
+                for (int i=0; i < adapter.getCount(); i++){
+                    MyDataModel dataModel = adapter.getItem(i);
+
+                    //cost of equity and cost of capital can either be asked for or calculated based off on inputs
+                    double CostOfEquity = .12;
+                    double CostOfCapital = .09;
+
+                    //int FreeCashFlowToEquity = Net Income - (Capital Expenditures - Depreciation) -
+                            //(Change in Non-cash Working Capital)+ (New Debt Issued - Debt Repayments)
+
+                    //assuming Two-stage FCFE model, designed to value a firm which is expected to grow
+                    //much faster than a stable firm in the initial period and at a stable rate after that.
+
+                    //calculate Return on Equity
+                    //Return on Equity = Net Income/Shareholder's Equity
+                    //int ReturnOnEquity = 0/0;
+
+
+                    int TerminalValueCFToEquity  = 0;
+                    int TerminalValueDifference = 0;
+                    int TerminalValueCFToFirm = 0;
+
+                    EquityValue = EquityValue += ((Double.valueOf(dataModel.getCashFlowToEquity()))/(Math.pow(1+CostOfEquity, i+1)));
+                    ValueOfFirm = ValueOfFirm += ((Double.valueOf(dataModel.getCashFlowToFirm()))/(Math.pow(1+CostOfEquity, i+1)));
+                }
+
             } else {
                 Snackbar.make(findViewById(R.id.parentLayout), "No Data Found", Snackbar.LENGTH_LONG).show();
             }
         }
+
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                mDrawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

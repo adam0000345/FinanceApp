@@ -22,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Value Of Equtiy/Firm" />
+                android:text="Value Of Equity/Firm" />
         </LinearLayout>
 
     </RelativeLayout>
@@ -45,7 +45,7 @@
             android:textAppearance="?android:textAppearanceLarge" />
 
         <TextView
-            android:id="@+id/textViewDifference"
+            android:id="@+id/textView2CashFlowToFirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView" />
@@ -54,18 +54,15 @@
             android:id="@+id/textViewCashFlowToEquity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="1dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginStart="5dp"
-            android:textAppearance="?android:textAppearanceMedium" />
+            android:text="TextView" />
+
 
         <TextView
-            android:id="@+id/textView2CashFlowToFirm"
+            android:id="@+id/textViewDifference"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView" />
+
 
     </LinearLayout>
 

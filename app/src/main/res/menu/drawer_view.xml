@@ -4,18 +4,18 @@
         <item
             android:id="@+id/nav_camera"
             android:icon="@drawable/baseline_camera_enhance_black_18dp"
-            android:title="import" />
+            android:title="Financial Model Type 1" />
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/baseline_camera_enhance_black_18dp"
-            android:title="gallery" />
+            android:title="Financial Model Type 2" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/baseline_camera_enhance_black_18dp"
-            android:title="slideshow" />
+            android:title="Financial Model Type 3" />
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/baseline_camera_enhance_black_18dp"
-            android:title="tools" />
+            android:title="Financial Model Type 4" />
     </group>
 </menu>
