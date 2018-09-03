@@ -1,0 +1,8 @@
+For Equity Value and Firm Value calculation, being able to pull the following data from Excel:
+"https://script.google.com/macros/s/AKfycbxw1d75kBSs7cPNPI0hlUSdwUrLNpfGw0eLUKkMjQitesAa7kfz/exec"
+
+For different model types, have different model types icons below Stock Symbol,
+have data accessible via the Stock symbol and the model type symbol,
+do not grab or load the whole excel sheet but only do it based off the part interested,
+insert into Excel sheet only the part you want to do by specifying Stock symbol and the model type
+

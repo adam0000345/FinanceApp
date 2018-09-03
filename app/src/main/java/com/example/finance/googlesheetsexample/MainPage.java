@@ -3,6 +3,8 @@ package com.example.finance.googlesheetsexample;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -23,6 +25,7 @@ public class MainPage extends AppCompatActivity{
     Button getData;
     Button sendData;
 
+
     private DrawerLayout mDrawerLayout;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +44,10 @@ public class MainPage extends AppCompatActivity{
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        final NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.bringToFront();
+
+
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -54,10 +59,14 @@ public class MainPage extends AppCompatActivity{
 
                         // Add code here to update the UI based on the item selected
                         // For example, swap UI fragments here
+                        displaySelectedScreen(menuItem.getItemId());
+
 
                         return true;
                     }
                 });
+
+
 
         getData.setOnClickListener(new View.OnClickListener(){
 
@@ -85,6 +94,25 @@ public class MainPage extends AppCompatActivity{
 
 
     };
+
+    private void displaySelectedScreen(int itemId) {
+
+
+
+        //initializing the Activity object which is selected
+        switch (itemId) {
+            case R.id.nav_EquityvalueFirmvalue:
+                Intent i = new Intent(getApplicationContext(), EquityValueFirmValue.class);
+                startActivity(i);
+                break;
+
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

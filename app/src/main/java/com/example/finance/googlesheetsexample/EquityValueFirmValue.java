@@ -1,6 +1,7 @@
 package com.example.finance.googlesheetsexample;
 
 import android.app.ProgressDialog;
+import android.graphics.ColorSpace;
 import android.media.audiofx.DynamicsProcessing;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -19,7 +20,10 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -27,6 +31,7 @@ import android.widget.Toast;
 import com.example.finance.googlesheetsexample.androidlabs.gsheets1.JSONparser;
 import com.example.finance.googlesheetsexample.androidlabs.gsheets1.MyArrayAdapter;
 import com.example.finance.googlesheetsexample.androidlabs.gsheets1.MyDataModel;
+import com.example.finance.googlesheetsexample.post.PostData;
 import com.example.finance.googlesheetsexample.util.InternetConnection;
 import com.example.finance.googlesheetsexample.util.Keys;
 import com.facebook.drawee.backends.pipeline.Fresco;
@@ -35,104 +40,74 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.text.BreakIterator;
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class UserList extends AppCompatActivity {
-
-    private ListView listView;
-    private ArrayList<MyDataModel> list;
-    private MyArrayAdapter adapter;
-    private DrawerLayout mDrawerLayout;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.waitingscreentopullexceldata);
-        Fresco.initialize(this);
-
-        //!!!!!!!!!!!!!FORMAT THIS EVENTUALLY!!!!!!!!!!!!!!!!!!!!!
-        //Below is repeat code from the MainPage, MainPage and Userlist use
-        //the same code as below, see if there is a way to condense this
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        ActionBar actionbar = getSupportActionBar();
-        actionbar.setDisplayHomeAsUpEnabled(true);
-        actionbar.setHomeAsUpIndicator(R.drawable.baseline_menu_black_18dp);
+import javax.net.ssl.HttpsURLConnection;
 
 
+public class EquityValueFirmValue extends AppCompatActivity {
 
-        mDrawerLayout = findViewById(R.id.drawer_layout);
+
+        TextView tvStockTickerSymbol;
+        String StockTickerSymbol;
+        String ModelLabel;
+        Button button;
+        private ArrayList<MyDataModel> list;
+        private MyArrayAdapter adapter;
 
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.bringToFront();
-        navigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(MenuItem menuItem) {
-                        // set item as selected to persist highlight
-                        menuItem.setChecked(true);
-                        // close drawer when item is tapped
-                        mDrawerLayout.closeDrawers();
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.equityvaluefirmvalue);
+            Fresco.initialize(this);
 
-                        // Add code here to update the UI based on the item selected
-                        // For example, swap UI fragments here
+            button=(Button)findViewById(R.id.EquityValueFirmValueSubmitButton);
+            tvStockTickerSymbol=(EditText)findViewById(R.id.SavedStockSymbol);
 
-                        return true;
+
+
+            Toolbar toolbar = findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+            ActionBar actionbar = getSupportActionBar();
+            //actionbar.setDisplayHomeAsUpEnabled(true);
+            //actionbar.setHomeAsUpIndicator(R.drawable.baseline_menu_black_18dp);
+
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    StockTickerSymbol = tvStockTickerSymbol.getText().toString();
+                    ModelLabel="EquityValueFirmValue";
+
+                    if (InternetConnection.checkConnection(getApplicationContext())) {
+                        new GetDataTask().execute();
+
+                    } else {
+                        Snackbar.make(view, "Internet Connection Not Available", Snackbar.LENGTH_LONG).show();
                     }
-                });
-
-        /**
-         * Array List for Binding Data from JSON to this List
-         */
-        list = new ArrayList<>();
-        /**
-         * Binding that List to Adapter
-         */
-        adapter = new MyArrayAdapter(this, list);
-
-        /**
-         * Getting List and Setting List Adapter
-         */
-        listView = (ListView) findViewById(R.id.listView);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            //list.get(position).getPhone()
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Snackbar.make(findViewById(R.id.parentLayout), list.get(position).getYear() + " => " + list.get(position).getCashFlowToEquity(), Snackbar.LENGTH_LONG).show();
-            }
-        });
-
-        /**
-         * Just to know onClick and Printing Hello Toast in Center.
-         */
-        Toast toast = Toast.makeText(getApplicationContext(), "Click on FloatingActionButton to Load JSON", Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        toast.show();
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(@NonNull View view) {
-
-                /**
-                 * Checking Internet Connection
-                 */
-                if (InternetConnection.checkConnection(getApplicationContext())) {
-                    new GetDataTask().execute();
-
-                } else {
-                    Snackbar.make(view, "Internet Connection Not Available", Snackbar.LENGTH_LONG).show();
                 }
 
+            }   );
 
-            }
-        });
+            list = new ArrayList<>();
+
+            adapter = new MyArrayAdapter(this, list);
 
 
-    }
+
+
+        }
 
     /**
      * Creating Get Data Task for Getting Data From Web
@@ -159,7 +134,7 @@ public class UserList extends AppCompatActivity {
             else
                 jIndex=x;
 
-            dialog = new ProgressDialog(UserList.this);
+            dialog = new ProgressDialog(EquityValueFirmValue.this);
             dialog.setTitle("Hey Wait Please..."+x);
             dialog.setMessage("I am getting your JSON");
             dialog.show();
@@ -172,7 +147,7 @@ public class UserList extends AppCompatActivity {
             /**
              * Getting JSON Object from Web Using okHttp
              */
-            JSONObject jsonObject = JSONparser.getDataFromWeb();
+            JSONObject jsonObject = JSONparser.getDataByStockSymbol(StockTickerSymbol, ModelLabel);
 
             try {
                 /**
@@ -301,7 +276,7 @@ public class UserList extends AppCompatActivity {
                     double CostOfCapital = .09;
 
                     //int FreeCashFlowToEquity = Net Income - (Capital Expenditures - Depreciation) -
-                            //(Change in Non-cash Working Capital)+ (New Debt Issued - Debt Repayments)
+                    //(Change in Non-cash Working Capital)+ (New Debt Issued - Debt Repayments)
 
                     //assuming Two-stage FCFE model, designed to value a firm which is expected to grow
                     //much faster than a stable firm in the initial period and at a stable rate after that.
@@ -327,13 +302,5 @@ public class UserList extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                mDrawerLayout.openDrawer(GravityCompat.START);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+
 }

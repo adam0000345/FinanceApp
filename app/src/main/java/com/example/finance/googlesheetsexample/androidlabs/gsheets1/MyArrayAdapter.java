@@ -49,7 +49,7 @@ public class MyArrayAdapter extends ArrayAdapter<MyDataModel> {
 
         if (item.getYear() == 0) {
             vh.textViewYear.setText("Terminal Value: " + Integer.toString(item.getYear()));
-            vh.textViewCashFlowToEquity.setText(" Terminal CashFlow To Equity: " + Integer.toString(item.getCashFlowToEquity()));
+            vh.textViewCashFlowToEquity.setText(" Terminal CashFlow To Equity: " + Integer.toString(item.getTerminalCashFlowToEquity()));
             vh.textViewDifference.setText("TerminalDifference Between Numbers Before & After: " + Integer.toString(item.getTerminaldifference()));
             vh.textViewCashFlowToFirm.setText("Terminal CashFlow To Firm: " + Integer.toString(item.getTerminalcftofirm()));
 

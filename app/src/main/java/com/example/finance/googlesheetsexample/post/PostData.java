@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,9 +41,9 @@ public class PostData extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inputform);
 
-//        button=(Button)findViewById(R.id.btn_submit);
-//        tvName=(EditText)findViewById(R.id.input_name);
-//        tvCountry=(EditText)findViewById(R.id.input_country);
+        button=(Button)findViewById(R.id.btn_submit);
+        tvName=(EditText)findViewById(R.id.input_name);
+        tvCountry=(EditText)findViewById(R.id.input_country);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override

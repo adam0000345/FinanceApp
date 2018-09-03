@@ -4,6 +4,7 @@ package com.example.finance.googlesheetsexample.androidlabs.gsheets1;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.example.finance.googlesheetsexample.util.Keys;
 import com.squareup.okhttp.FormEncodingBuilder;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -22,9 +23,9 @@ public class JSONparser {
 
     public static final String TAG = "TAG";
 
-    private static final String KEY_USER_ID = "user_id";
-
     private static Response response;
+
+    private static final String myAPIKey = "";
 
     public static JSONObject getDataFromWeb() {
         try {
@@ -42,13 +43,15 @@ public class JSONparser {
         return null;
     }
 
-    public static JSONObject getDataById(int userId) {
+    public static JSONObject getDataByStockSymbol(String stocksymbol, String modelType) {
+
+        final String MAIN_URL = "https://script.google.com/macros/s/AKfycbzum_eIP1hMeE58ct1Y-l7WtXkN5-0sLxD6N1kZcxUXXFa_vwzr/exec";
 
         try {
             OkHttpClient client = new OkHttpClient();
 
-            RequestBody formBody = new FormEncodingBuilder()
-                    .add(KEY_USER_ID, Integer.toString(userId))
+            RequestBody formBody = new FormEncodingBuilder().add("key", myAPIKey)
+                    .add(Keys.KEY_STOCKSYMBOL, stocksymbol).add(Keys.KEY_MODELTYPE, modelType)
                     .build();
 
             Request request = new Request.Builder()
@@ -56,6 +59,8 @@ public class JSONparser {
                     .post(formBody)
                     .build();
 
+            //info: Look into why calls to Google Sheets API can take a while and it
+            // does not stop at Terminal Value when it should
             response = client.newCall(request).execute();
             return new JSONObject(response.body().string());
 

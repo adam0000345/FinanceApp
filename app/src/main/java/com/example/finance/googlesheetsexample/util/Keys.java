@@ -11,6 +11,8 @@ public class Keys {
     public static final String KEY_TERMINALCFTOEQUITY = "terminalcftoequity";
     public static final String KEY_TERMINALDIFFERENCE = "terminalint(1-t)";
     public static final String KEY_TERMINALCFTOFIRM = "terminalcftofirm";
+    public static final String KEY_STOCKSYMBOL = "stocktickersymbol";
+    public static final String KEY_MODELTYPE= "modeltype";
 
 
 }
