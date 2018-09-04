@@ -47,21 +47,23 @@ public class JSONparser {
 
         final String MAIN_URL = "https://script.google.com/macros/s/AKfycbzum_eIP1hMeE58ct1Y-l7WtXkN5-0sLxD6N1kZcxUXXFa_vwzr/exec";
 
+        String id= "1GYqw7C2fMv0qaPvrwnddtbwI1f4zRDh_9Fj-xyhV1gg";
+
         try {
             OkHttpClient client = new OkHttpClient();
 
-            RequestBody formBody = new FormEncodingBuilder().add("key", myAPIKey)
-                    .add(Keys.KEY_STOCKSYMBOL, stocksymbol).add(Keys.KEY_MODELTYPE, modelType)
-                    .build();
+
+
 
             Request request = new Request.Builder()
-                    .url(MAIN_URL)
-                    .post(formBody)
+                    .url(MAIN_URL+"?"+(Keys.KEY_STOCKSYMBOL + "=" + stocksymbol + "&") +
+                            (Keys.KEY_MODELTYPE + "=" + modelType + "&") + ("id" + "=" + id)).get()
                     .build();
 
             //info: Look into why calls to Google Sheets API can take a while and it
             // does not stop at Terminal Value when it should
             response = client.newCall(request).execute();
+            System.out.printf(response.toString());
             return new JSONObject(response.body().string());
 
         } catch (IOException | JSONException e) {
