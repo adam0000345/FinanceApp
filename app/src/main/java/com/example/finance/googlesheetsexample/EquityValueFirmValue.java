@@ -72,7 +72,7 @@ public class EquityValueFirmValue extends AppCompatActivity {
             setContentView(R.layout.equityvaluefirmvalue);
             Fresco.initialize(this);
 
-            button=(Button)findViewById(R.id.EquityValueFirmValueSubmitButton);
+            //button=(Button)findViewById(R.id.EquityValueFirmValueSubmitButton);
             tvStockTickerSymbol=(EditText)findViewById(R.id.SavedStockSymbol);
 
 
@@ -83,22 +83,22 @@ public class EquityValueFirmValue extends AppCompatActivity {
             //actionbar.setDisplayHomeAsUpEnabled(true);
             //actionbar.setHomeAsUpIndicator(R.drawable.baseline_menu_black_18dp);
 
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    StockTickerSymbol = tvStockTickerSymbol.getText().toString();
-                    ModelLabel="EquityValueFirmValue";
-
-                    if (InternetConnection.checkConnection(getApplicationContext())) {
-                        new GetDataTask().execute();
-
-                    } else {
-                        Snackbar.make(view, "Internet Connection Not Available", Snackbar.LENGTH_LONG).show();
-                    }
-                }
-
-            }   );
+//            button.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//
+//                    StockTickerSymbol = tvStockTickerSymbol.getText().toString();
+//                    ModelLabel="EquityValueFirmValue";
+//
+//                    if (InternetConnection.checkConnection(getApplicationContext())) {
+//                        new GetDataTask().execute();
+//
+//                    } else {
+//                        Snackbar.make(view, "Internet Connection Not Available", Snackbar.LENGTH_LONG).show();
+//                    }
+//                }
+//
+//            }   );
 
             list = new ArrayList<>();
 
