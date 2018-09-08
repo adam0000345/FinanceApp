@@ -296,9 +296,6 @@ public class UserList extends AppCompatActivity {
                 for (int i=0; i < adapter.getCount(); i++){
                     MyDataModel dataModel = adapter.getItem(i);
 
-                    //cost of equity and cost of capital can either be asked for or calculated based off on inputs
-                    double CostOfEquity = .12;
-                    double CostOfCapital = .09;
 
                     //int FreeCashFlowToEquity = Net Income - (Capital Expenditures - Depreciation) -
                             //(Change in Non-cash Working Capital)+ (New Debt Issued - Debt Repayments)
@@ -315,8 +312,8 @@ public class UserList extends AppCompatActivity {
                     int TerminalValueDifference = 0;
                     int TerminalValueCFToFirm = 0;
 
-                    EquityValue = EquityValue += ((Double.valueOf(dataModel.getCashFlowToEquity()))/(Math.pow(1+CostOfEquity, i+1)));
-                    ValueOfFirm = ValueOfFirm += ((Double.valueOf(dataModel.getCashFlowToFirm()))/(Math.pow(1+CostOfEquity, i+1)));
+                    //EquityValue = EquityValue += ((Double.valueOf(dataModel.getCashFlowToEquity()))/(Math.pow(1+CostOfEquity, i+1)));
+                    //ValueOfFirm = ValueOfFirm += ((Double.valueOf(dataModel.getCashFlowToFirm()))/(Math.pow(1+CostOfEquity, i+1)));
                 }
 
             } else {

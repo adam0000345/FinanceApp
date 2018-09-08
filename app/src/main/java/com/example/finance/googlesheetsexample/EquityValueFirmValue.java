@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputEditText;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -60,21 +61,24 @@ public class EquityValueFirmValue extends AppCompatActivity {
 
         TextView tvStockTickerSymbol;
         String StockTickerSymbol;
-        String ModelLabel;
-        Button button;
+        TextInputEditText CostOfEquity;
+        TextInputEditText CostOfCapital;
         private ArrayList<MyDataModel> list;
         private MyArrayAdapter adapter;
+        private Snackbar mSnackbar;
 
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.equityvaluefirmvalue);
+            //what does Fresco do?
             Fresco.initialize(this);
 
-            //button=(Button)findViewById(R.id.EquityValueFirmValueSubmitButton);
             tvStockTickerSymbol=(EditText)findViewById(R.id.SavedStockSymbol);
 
+            CostOfEquity = (TextInputEditText) findViewById(R.id.CostOfEquity);
+            CostOfCapital = (TextInputEditText) findViewById(R.id.CostOfCapital);
 
 
             Toolbar toolbar = findViewById(R.id.toolbar);
@@ -83,26 +87,27 @@ public class EquityValueFirmValue extends AppCompatActivity {
             //actionbar.setDisplayHomeAsUpEnabled(true);
             //actionbar.setHomeAsUpIndicator(R.drawable.baseline_menu_black_18dp);
 
-//            button.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//
-//                    StockTickerSymbol = tvStockTickerSymbol.getText().toString();
-//                    ModelLabel="EquityValueFirmValue";
-//
-//                    if (InternetConnection.checkConnection(getApplicationContext())) {
-//                        new GetDataTask().execute();
-//
-//                    } else {
-//                        Snackbar.make(view, "Internet Connection Not Available", Snackbar.LENGTH_LONG).show();
-//                    }
-//                }
-//
-//            }   );
+            FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.EquityValueFirmValueFab);
+
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(@NonNull View view) {
+
+                    /**
+                     * Checking Internet Connection
+                     */
+                    if (InternetConnection.checkConnection(getApplicationContext())) {
+                        new GetDataTask().execute();
+
+                    } else {
+                        Snackbar.make(view, "Internet Connection Not Available", Snackbar.LENGTH_LONG).show();
+                    }
+
+
+                }
+            });
 
             list = new ArrayList<>();
-
-            adapter = new MyArrayAdapter(this, list);
 
 
 
@@ -147,7 +152,7 @@ public class EquityValueFirmValue extends AppCompatActivity {
             /**
              * Getting JSON Object from Web Using okHttp
              */
-            JSONObject jsonObject = JSONparser.getDataByStockSymbol(StockTickerSymbol, ModelLabel);
+            JSONObject jsonObject = JSONparser.getDataByStockSymbol(tvStockTickerSymbol.getText().toString(), "EquityValueFirmValue");
 
             try {
                 /**
@@ -228,12 +233,6 @@ public class EquityValueFirmValue extends AppCompatActivity {
                                 }
 
 
-                                /**
-                                 * Getting Object from Object "phone"
-                                 */
-                                //JSONObject phoneObject = innerObject.getJSONObject(Keys.KEY_PHONE);
-                                //String phone = phoneObject.getString(Keys.KEY_MOBILE);
-
 
                                 /**
                                  * Adding numeric values from excel sheet to List...
@@ -262,18 +261,17 @@ public class EquityValueFirmValue extends AppCompatActivity {
 
 
             if(list.size() > 0) {
-                adapter.notifyDataSetChanged();
                 //use the fetched data for calculations here
 
                 double EquityValue = 0;
                 double ValueOfFirm = 0;
 
-                for (int i=0; i < adapter.getCount(); i++){
-                    MyDataModel dataModel = adapter.getItem(i);
+                for (int i=0; i < list.size(); i++){
+                    MyDataModel dataModel = list.get(i);
 
                     //cost of equity and cost of capital can either be asked for or calculated based off on inputs
-                    double CostOfEquity = .12;
-                    double CostOfCapital = .09;
+                    //double CostOfEquity = .12;
+                    //double CostOfCapital = .09;
 
                     //int FreeCashFlowToEquity = Net Income - (Capital Expenditures - Depreciation) -
                     //(Change in Non-cash Working Capital)+ (New Debt Issued - Debt Repayments)
@@ -290,17 +288,27 @@ public class EquityValueFirmValue extends AppCompatActivity {
                     int TerminalValueDifference = 0;
                     int TerminalValueCFToFirm = 0;
 
-                    EquityValue = EquityValue += ((Double.valueOf(dataModel.getCashFlowToEquity()))/(Math.pow(1+CostOfEquity, i+1)));
-                    ValueOfFirm = ValueOfFirm += ((Double.valueOf(dataModel.getCashFlowToFirm()))/(Math.pow(1+CostOfEquity, i+1)));
+                    //double CostOfEquity = .12;
+                    //double CostOfCapital = .09;
+
+                    EquityValue += ((Double.valueOf(dataModel.getCashFlowToEquity()))/(Math.pow(1+Double.parseDouble(CostOfEquity.getText().toString()), i+1)));
+                    ValueOfFirm += ((Double.valueOf(dataModel.getCashFlowToFirm()))/(Math.pow(1+Double.parseDouble(CostOfCapital.getText().toString()), i+1)));
                 }
 
+                //Draw the results
+                Snackbar.make(findViewById(R.id.nav_EquityvalueFirmvalueParentLayout), "EquityValue: " + String.format("%.2f", EquityValue) + " : " +
+                                "ValueOfFirm: " + String.format("%.2f", ValueOfFirm), Snackbar.LENGTH_INDEFINITE).show();
+
+
             } else {
-                Snackbar.make(findViewById(R.id.parentLayout), "No Data Found", Snackbar.LENGTH_LONG).show();
+                Snackbar.make(findViewById(R.id.nav_EquityvalueFirmvalueParentLayout), "No Data Found", Snackbar.LENGTH_LONG).show();
             }
         }
 
 
     }
+
+
 
 
 }

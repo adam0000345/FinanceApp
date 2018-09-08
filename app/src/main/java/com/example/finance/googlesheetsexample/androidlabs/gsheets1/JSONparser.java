@@ -60,10 +60,12 @@ public class JSONparser {
                             (Keys.KEY_MODELTYPE + "=" + modelType + "&") + ("id" + "=" + id)).get()
                     .build();
 
+            System.out.println("REQUEST "+ request);
+
             //info: Look into why calls to Google Sheets API can take a while and it
             // does not stop at Terminal Value when it should
             response = client.newCall(request).execute();
-            System.out.printf(response.toString());
+            System.out.printf("TEST" + response.toString());
             return new JSONObject(response.body().string());
 
         } catch (IOException | JSONException e) {
