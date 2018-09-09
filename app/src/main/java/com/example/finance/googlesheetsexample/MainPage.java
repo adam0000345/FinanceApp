@@ -108,6 +108,15 @@ public class MainPage extends AppCompatActivity{
 
         }
 
+        //initializing the Activity object which is selected
+        switch (itemId) {
+            case R.id.nav_WACCDetailed:
+                Intent i = new Intent(getApplicationContext(), WACCDetailed.class);
+                startActivity(i);
+                break;
+
+        }
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
     }

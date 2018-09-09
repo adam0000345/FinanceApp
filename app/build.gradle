@@ -31,6 +31,7 @@ dependencies {
     //androidTestImplementation 'junit:4.12'
     //compile 'com.android.support:appcompat-v7:23.1.0'
     //compile 'com.android.support:design:23.1.0'
+    implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
     implementation 'com.squareup.okhttp:okhttp:2.4.0'
     implementation 'com.squareup.okhttp:okhttp-urlconnection:2.4.0'
     implementation 'com.facebook.fresco:fresco:1.10.0'

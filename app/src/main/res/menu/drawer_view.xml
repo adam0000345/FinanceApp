@@ -8,16 +8,32 @@
             android:icon="@drawable/baseline_camera_enhance_black_18dp"
             android:title="EquityValue/FirmValue" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_WACCDetailed"
             android:icon="@drawable/baseline_camera_enhance_black_18dp"
-            android:title="Financial Model Type 2" />
+            android:title="WACC:Detailed" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_WACCSimple"
             android:icon="@drawable/baseline_camera_enhance_black_18dp"
-            android:title="Financial Model Type 3" />
+            android:title="WACC:Simple" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/nav_APVDetailed"
             android:icon="@drawable/baseline_camera_enhance_black_18dp"
-            android:title="Financial Model Type 4" />
+            android:title="APV:Detailed" />
+        <item
+            android:id="@+id/nav_APVSimple"
+            android:icon="@drawable/baseline_camera_enhance_black_18dp"
+            android:title="APV:Simple" />
+        <item
+        android:id="@+id/nav_DividendGrowthModel"
+        android:icon="@drawable/baseline_camera_enhance_black_18dp"
+        android:title="Dividend Growth Model" />
+        <item
+            android:id="@+id/nav_RealOptionsValuation"
+            android:icon="@drawable/baseline_camera_enhance_black_18dp"
+            android:title="Real Options Valuation" />
+        <item
+            android:id="@+id/nav_NotSure"
+            android:icon="@drawable/baseline_camera_enhance_black_18dp"
+            android:title="Not Sure" />
     </group>
 </menu>
