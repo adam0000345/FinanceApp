@@ -11,6 +11,17 @@
             android:id="@+id/nav_WACCDetailed"
             android:icon="@drawable/baseline_camera_enhance_black_18dp"
             android:title="WACC:Detailed" />
+            <menu>
+                <item
+                    android:id="@+id/nav_WACCDetailedPageOne"
+                    android:icon="@drawable/baseline_camera_enhance_black_18dp"
+                    android:title="WACCDetailedPageOne" />
+                <item
+                    android:id="@+id/nav_WACCDetailedPageTwo"
+                    android:icon="@drawable/baseline_camera_enhance_black_18dp"
+                    android:title="WACCDetailedPageTwo" />
+
+            </menu>
         <item
             android:id="@+id/nav_WACCSimple"
             android:icon="@drawable/baseline_camera_enhance_black_18dp"
@@ -37,3 +48,8 @@
             android:title="Not Sure" />
     </group>
 </menu>
+
+
+
+
+

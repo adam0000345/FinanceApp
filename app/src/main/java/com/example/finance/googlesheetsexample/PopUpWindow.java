@@ -1,14 +1,15 @@
 package com.example.finance.googlesheetsexample;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
+import android.widget.TextView;
 
 public class PopUpWindow extends Activity{
 
-    private String message = "";
-
+    private TextView TVmessage;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,11 +23,15 @@ public class PopUpWindow extends Activity{
         int width = displayMetrics.widthPixels;
         int height = displayMetrics.heightPixels;
 
-        getWindow().setLayout((int) (width*.8), (int) (height *.8));
+        Intent intent = getIntent();
+        String message = intent.getStringExtra("message");
+
+        TVmessage = (TextView)  findViewById(R.id.PopUpMessage);
+        TVmessage.setText(message);
+
+
+        getWindow().setLayout((int) (width*.85), (int) (height *.85));
     }
 
-    public void setText(String message){
-        message = message;
 
-    }
 }
