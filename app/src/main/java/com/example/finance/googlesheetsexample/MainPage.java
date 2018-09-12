@@ -40,8 +40,6 @@ public class MainPage extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainmenu);
 
-        getData=(Button)findViewById(R.id.insertUser);
-        sendData=(Button)findViewById(R.id.viewUser);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -50,6 +48,8 @@ public class MainPage extends AppCompatActivity{
         actionbar.setHomeAsUpIndicator(R.drawable.baseline_menu_black_18dp);
 
         expandableListView = findViewById(R.id.expandableListView);
+
+
         prepareMenuData();
         populateExpandableList();
 
@@ -82,32 +82,6 @@ public class MainPage extends AppCompatActivity{
 
 
                 });
-
-
-
-        getData.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-
-
-                Intent intent = new Intent(getApplicationContext(), UserList.class);
-                startActivity(intent);
-
-            }
-
-        });
-        sendData.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-
-
-                Intent intent = new Intent(getApplicationContext(), PostData.class);
-                startActivity(intent);
-            }
-
-        });
 
 
     };
@@ -171,9 +145,22 @@ public class MainPage extends AppCompatActivity{
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 return true;
+
+            case R.id.viweruser:
+                Intent intent = new Intent(getApplicationContext(), UserList.class);
+                startActivity(intent);
+                return true;
+
+            case R.id.adduser:
+                intent = new Intent(getApplicationContext(), PostData.class);
+                startActivity(intent);
+                return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
+
+
 
     private void prepareMenuData() {
 

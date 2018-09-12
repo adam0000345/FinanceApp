@@ -2,20 +2,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.finance.googlesheetsexample.UserList">
+
+    <item android:title="Data Management"
+        app:showAsAction="always">
+        <menu>
+
     <item
-    android:id="@+id/action_settings"
-    android:orderInCategory="100"
-    android:title="@string/action_settings"
-    app:showAsAction="never" />
-    <item
-        android:id="@+id/ViewUser"
+        android:id="@+id/viweruser"
         android:orderInCategory="100"
         android:title="View User"
         app:showAsAction="never" />
     <item
-        android:id="@+id/AddUser"
+        android:id="@+id/adduser"
         android:orderInCategory="100"
         android:title="Add User"
         app:showAsAction="never" />
+        </menu>
+    </item>
+
 </menu>
 

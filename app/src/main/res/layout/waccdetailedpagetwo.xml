@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:minHeight="0dp"
+    android:minWidth="@dimen/activity_vertical_margin">
 
     <TextView
-        android:id="@+id/WACCDetailedPage2WACC"
+        android:id="@+id/WACCDetailedPageTwoWACC"
         android:layout_width="122dp"
         android:layout_height="41dp"
         android:layout_marginBottom="10dp"
@@ -17,7 +18,7 @@
         android:layout_marginStart="120dp"
         android:layout_marginTop="252dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/WACCDetailedPage2WACCSpinner"
+        app:layout_constraintBottom_toTopOf="@+id/WACCDetailedPageTwoWACCSpinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,7 +33,7 @@
         android:layout_marginRight="120dp"
         android:layout_marginStart="120dp"
         android:layout_marginTop="452dp"
-        android:text=" "
+        android:text="Test"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,13 +41,13 @@
 
     <TextView
         android:id="@+id/WACCDetailedPageTwoTitle"
-        android:layout_width="122dp"
+        android:layout_width="220dp"
         android:layout_height="41dp"
         android:layout_marginBottom="24dp"
-        android:layout_marginEnd="120dp"
-        android:layout_marginLeft="120dp"
-        android:layout_marginRight="120dp"
-        android:layout_marginStart="120dp"
+        android:layout_marginEnd="94dp"
+        android:layout_marginLeft="94dp"
+        android:layout_marginRight="94dp"
+        android:layout_marginStart="94dp"
         android:layout_marginTop="24dp"
         android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/WACCDetailedPageTwoOperatingIncome"
@@ -110,13 +111,13 @@
         android:layout_marginRight="80dp"
         android:layout_marginStart="80dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/WACCDetailedPage2WACC"
+        app:layout_constraintBottom_toTopOf="@+id/WACCDetailedPageTwoWACC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/WACCDetailedPageTwoDepreciation" />
 
     <Spinner
-        android:id="@+id/WACCDetailedPage2WACCSpinner"
+        android:id="@+id/WACCDetailedPageTwoWACCSpinner"
         android:layout_width="224dp"
         android:layout_height="19dp"
         android:layout_marginBottom="22dp"
@@ -128,7 +129,7 @@
         app:layout_constraintBottom_toTopOf="@+id/WACCDetailedPageTwoTerminalGrowthRate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/WACCDetailedPage2WACC" />
+        app:layout_constraintTop_toBottomOf="@+id/WACCDetailedPageTwoWACC" />
 
     <Spinner
         android:id="@+id/WACCDetailedPageTwoTerminalGrowthRateSpinner"

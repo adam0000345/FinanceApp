@@ -20,8 +20,8 @@ public class WACCDetailedPageTwo extends AppCompatActivity {
     private Spinner WACCPageTwoOperatingIncomeSpinner;
     private TextView WACCDetailedPageTwoDepreciation;
     private Spinner WACCDetailedPageTwoDepreciationSpinner;
-    private TextView WACCDetailedPage2WACC;
-    private Spinner WACCDetailedPage2WACCSpinner;
+    private TextView WACCDetailedPageTwoWACC;
+    private Spinner WACCDetailedPageTwoWACCSpinner;
     private TextView WACCDetailedPageTwoTerminalGrowthRate;
     private Spinner WACCDetailedPageTwoTerminalGrowthRateSpinner;
     private TextView WACCDetailedPageTwoNotes;
@@ -42,11 +42,18 @@ public class WACCDetailedPageTwo extends AppCompatActivity {
         //actionbar.setHomeAsUpIndicator(R.drawable.baseline_menu_black_18dp);
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
+        WACCDetailedPageTwoOperatingIncome = (TextView) this.findViewById(R.id.WACCDetailedPageTwoOperatingIncome);
+        WACCDetailedPageTwoDepreciation = (TextView) this.findViewById(R.id.WACCDetailedPageTwoDepreciation);
+        WACCDetailedPageTwoWACC = (TextView) this.findViewById(R.id.WACCDetailedPageTwoWACC);
+
 
         WACCDetailedPageTwoTitle = (TextView) this.findViewById(R.id.WACCDetailedPageTwoTitle);
         WACCDetailedPageTwoTitle.setText("A Few Key Questions Before You Start" +
                 "\n\nBefore putting in base-year numbers, think through how you wish " +
                 "to input: Operating Income (i.e., EBIT), Depreciation, WACC, and " +
                 "Terminal Growth Rate (g). Choose one option under each.");
+
+
+
     }
 }
