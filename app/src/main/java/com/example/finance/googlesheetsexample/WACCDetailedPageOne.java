@@ -149,60 +149,34 @@ public class WACCDetailedPageOne extends AppCompatActivity {
 
         TerminalValueDescription
                 .setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                    @Override
+                    public void onClick(View v) {
 
-                //Logic
-                Intent intent = new Intent(WACCDetailedPageOne.this, PopUpWindow.class);
-                intent.putExtra("message", "Terminal Value (TV) is the " +
-                        "continuing value of the business after the detailed forecast (or, 'proforma' " +
-                        ") period ends.  It is calculated using the constant growth model: " +
-                        "\n\nTV = FCFFr + (WACCr - g)," +
-                        "\n\nwhere FCFFr is the cash flow in the first period after the forecast " +
-                        "period ends (if the forecast period is seven years, this year 8), WACCr " +
-                        "is the cost of capital in perpetuity after the forecast period, and " +
-                        "g is the Terminal Growth Rate (the growth rate in free cash flow in " +
-                        "perpetuity)." +
-                        "\n\n The enterprise value, EV, is the present value of TV plus the " +
-                        "present value of cash flows for each year of the proforma period. " +
-                        "\n\n Some analysts use multiples (e.g., EV/EBITDA, EV/Sales) " +
-                        "to estimate TV. However, g is implicit (and therefore, hidden) " +
-                        "in a multiple, while iti s made explicit in the constant growth model. " +
-                        "Moreover, the danger with using multiples is that they undercut " +
-                        "the very notion that we are undertaking a discounted cash flow " +
-                        "(or intrinsic) valuation, making this instead a hybrid relative valuation.");
+                        //Logic
+                        Intent intent = new Intent(WACCDetailedPageOne.this, PopUpWindow.class);
+                        intent.putExtra("message", "'Operating Income' is a company's " +
+                                "'Earnings before Interest and Taxes,' or 'EBIT'.  If Depreciation " +
+                                "charges are already included in a company's costs (as they " +
+                                "typically are), then Operating Income is defined as: " +
+                                " EBIT = Revenue - Cost of Goods Sold (CGS) - Selling " +
+                                ", General & Administrative Expense (SGA). " +
+                                "\n\nIf Depreciation charges are not already in CGS " +
+                                "and SGA, then it would have to be additionally subtracted " +
+                                "to get correct EBIT; Depreciation can be found in " +
+                                "the Cash Flow Statement. " +
+                                "\n\nIf you choose the option 'Will input percent EBIT,' " +
+                                "the CGS and SGA ells will be greyed out.  If you choose " +
+                                "the option 'Will input percent CGS and percent SGA,' the " +
+                                "initial EBIT will be calculated by default.");
 
-                startActivity(intent);
+                        startActivity(intent);
 
-            }
+                    }
 
-        });
+                });
 
 
 
-        textView.setText(
-                        "In the WACC '(weighted verage cost of capital)' " +
-                        "approach, we value the operating assets of " +
-                        "a business by discounting he free cash flows " +
-                        "to the firm (FCFF) by the cost of financing " +
-                        "the assets (WACC or 'cost of capital'). " +
-                        "FCFF is the cash flow efore debt payments, " +
-                        "but after taxes and reinvestment needs. " +
-                "It is estimated each year for a 'proforma' " +
-                        "(or high-growth) period.  At the end of the " +
-                        "proforma period, FCFF is assumed to grow at " +
-                        "a constant rate forever, an assumption " +
-                        "that allows us to bypass year-specfic " +
-                        "estimates beyond that point in time, " +
-                        "and a 'terminal value' (TV) is estimated. " +
-                        "Both the proforma-period FCFF and TV are " +
-                        "then discounted back to today and " +
-                        "summed, to obtain the value of the" +
-                "operating assets, also called the 'enterprise value' " +
-        " or EV. To get from that value " +
-                        "o the value of equity (E),we add back the cash" +
-        "balance (C) of the firm and subtract the debt (D)" +
-        "that is outstanding today: E= EV - D + C");
 
 
 
