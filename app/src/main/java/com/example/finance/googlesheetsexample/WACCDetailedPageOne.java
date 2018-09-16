@@ -177,7 +177,29 @@ public class WACCDetailedPageOne extends AppCompatActivity {
 
 
 
-
+        textView.setText(
+                "In the WACC '(weighted verage cost of capital)' " +
+                        "approach, we value the operating assets of " +
+                        "a business by discounting he free cash flows " +
+                        "to the firm (FCFF) by the cost of financing " +
+                        "the assets (WACC or 'cost of capital'). " +
+                        "FCFF is the cash flow efore debt payments, " +
+                        "but after taxes and reinvestment needs. " +
+                        "It is estimated each year for a 'proforma' " +
+                        "(or high-growth) period.  At the end of the " +
+                        "proforma period, FCFF is assumed to grow at " +
+                        "a constant rate forever, an assumption " +
+                        "that allows us to bypass year-specfic " +
+                        "estimates beyond that point in time, " +
+                        "and a 'terminal value' (TV) is estimated. " +
+                        "Both the proforma-period FCFF and TV are " +
+                        "then discounted back to today and " +
+                        "summed, to obtain the value of the" +
+                        "operating assets, also called the 'enterprise value' " +
+                        " or EV. To get from that value " +
+                        "o the value of equity (E),we add back the cash" +
+                        "balance (C) of the firm and subtract the debt (D)" +
+                        "that is outstanding today: E= EV - D + C");
 
 
 

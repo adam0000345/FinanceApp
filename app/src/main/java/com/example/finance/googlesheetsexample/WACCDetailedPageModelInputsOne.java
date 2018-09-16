@@ -7,8 +7,10 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 
@@ -29,9 +31,10 @@ public class WACCDetailedPageModelInputsOne extends AppCompatActivity {
     private TextView WACCDetailedPageModelInputsOneAnnualRevenueGrowthRateToTerminal;
     private TextView WACCDetailedPageModelInputsOneCostGoodsSold;
     private TextView WACCDetailedPageModelInputsOneCostGoodsSoldValue;
-    private TextView WACCDetailedPageModelInputsOneAnnualRevenueGrowthRateToTerminalToggleButton;
+    private ToggleButton WACCDetailedPageModelInputsOneAnnualRevenueGrowthRateToTerminalToggleButton;
     private TextView WACCDetailedPageModelInputsOneCostGoodsSoldButton;
     private TextView WACCDetailedPageModelInputsOneAnnualRevenueGrowthRateButton;
+    private boolean WACCDetailedPageModelInputsOneAnnualRevenueGrowthRateToTerminalToggleButtonCondition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +87,8 @@ public class WACCDetailedPageModelInputsOne extends AppCompatActivity {
 
 
 
+        //Number of Forecast Periods
+
         WACCDetailedPageModelInputsOneNumberForecastPeriods = (TextView) this.findViewById
                 (R.id.WACCDetailedPageModelInputsOneNumberForecastPeriods);
         WACCDetailedPageModelInputsOneNumberForecastPeriods.setText("Number of forecast periods");
@@ -101,19 +106,151 @@ public class WACCDetailedPageModelInputsOne extends AppCompatActivity {
 
         });
 
-        WACCDetailedPageModelInputsOneNumberForecastPeriods.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
+        WACCDetailedPageModelInputsOneNumberForecastPeriodsValue = (EditText) this.findViewById
+                (R.id.WACCDetailedPageModelInputsOneNumberForecastPeriodsValue);
 
+
+        //Base year revenue input
+
+        WACCDetailedPageModelInputsOneBaseYearRevenue = (TextView) this.findViewById
+                (R.id.WACCDetailedPageModelInputsOneBaseYearRevenue);
+
+        WACCDetailedPageModelInputsOneBaseYearRevenue .setText("Base your revenue ($ millions)");
+
+        WACCDetailedPageModelInputsOneBaseYearRevenue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 Intent intent = new Intent(WACCDetailedPageModelInputsOne.this, PopUpWindow.class);
 
                 intent.putExtra("message", "test");
 
                 startActivity(intent);
-                return false;
+
             }
 
         });
+
+        WACCDetailedPageModelInputsOneBaseYearRevenueValue
+                = (EditText) this.findViewById(R.id.WACCDetailedPageModelInputsOneBaseYearRevenueValue);
+
+        //Annual revenue growth rate
+
+        WACCDetailedPageModelInputsOneAnnualRevenueGrowthRate = (TextView) this.findViewById(R.id.WACCDetailedPageModelInputsOneAnnualRevenueGrowthRate);
+
+        WACCDetailedPageModelInputsOneAnnualRevenueGrowthRate.setText("Annual revenue growth rate (%)");
+
+        WACCDetailedPageModelInputsOneAnnualRevenueGrowthRate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(WACCDetailedPageModelInputsOne.this, PopUpWindow.class);
+
+                intent.putExtra("message", "test");
+
+                startActivity(intent);
+
+            }
+
+        });
+
+        WACCDetailedPageModelInputsOneAnnualRevenueGrowthRate.setOnLongClickListener(new View.OnLongClickListener() {
+
+            @Override
+            public boolean onLongClick(View v) {
+                Intent intent = new Intent(WACCDetailedPageModelInputsOne.this, pdf_viewer.class);
+
+
+
+                startActivity(intent);
+                return false;
+            }
+
+
+
+
+        });
+
+        WACCDetailedPageModelInputsOneAnnualRevenueGrowthRateValue
+                = (EditText) this.findViewById(R.id.WACCDetailedPageModelInputsOneAnnualRevenueGrowthRateValue);
+
+        //Revenue growth fade to terminal growth
+
+        WACCDetailedPageModelInputsOneAnnualRevenueGrowthRateToTerminal = (TextView) this.findViewById(R.id.WACCDetailedPageModelInputsOneAnnualRevenueGrowthRateToTerminal);
+
+        WACCDetailedPageModelInputsOneAnnualRevenueGrowthRateToTerminal.setText("Revenue growth fade to terminal growth?");
+
+        WACCDetailedPageModelInputsOneAnnualRevenueGrowthRateToTerminalToggleButton = (ToggleButton) this.findViewById(R.id.WACCDetailedPageModelInputsOneAnnualRevenueGrowthRateToTerminalToggleButton);
+
+        WACCDetailedPageModelInputsOneAnnualRevenueGrowthRateToTerminalToggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    WACCDetailedPageModelInputsOneAnnualRevenueGrowthRateToTerminalToggleButtonCondition = true;
+                }
+                else{
+                    WACCDetailedPageModelInputsOneAnnualRevenueGrowthRateToTerminalToggleButtonCondition = false;
+                }
+            }
+
+
+
+        });
+
+        //Cost of goods sold as % revenue
+
+        WACCDetailedPageModelInputsOneCostGoodsSold = (TextView) this.findViewById(R.id.WACCDetailedPageModelInputsOneCostGoodsSold);
+
+        WACCDetailedPageModelInputsOneCostGoodsSold.setText("Cost of goods sold as % revenue");
+
+        WACCDetailedPageModelInputsOneCostGoodsSold.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(WACCDetailedPageModelInputsOne.this, PopUpWindow.class);
+
+                intent.putExtra("message", "test");
+
+                startActivity(intent);
+
+            }
+
+        });
+
+        WACCDetailedPageModelInputsOneCostGoodsSold.setOnLongClickListener(new View.OnLongClickListener() {
+
+            @Override
+            public boolean onLongClick(View v) {
+                Intent intent = new Intent(WACCDetailedPageModelInputsOne.this, pdf_viewer.class);
+
+
+
+                startActivity(intent);
+                return false;
+            }
+
+
+
+
+        });
+
+        WACCDetailedPageModelInputsOneCostGoodsSoldValue
+                = (EditText) this.findViewById(R.id.WACCDetailedPageModelInputsOneCostGoodsSoldValue);
+
+
+
+
+
+        //        WACCDetailedPageModelInputsOneNumberForecastPeriods.setOnLongClickListener(new View.OnLongClickListener() {
+//            @Override
+//            public boolean onLongClick(View v) {
+//
+//                Intent intent = new Intent(WACCDetailedPageModelInputsOne.this, PopUpWindow.class);
+//
+//                intent.putExtra("message", "test");
+//
+//                startActivity(intent);
+//                return false;
+//            }
+//
+//        });
     }
 
 
