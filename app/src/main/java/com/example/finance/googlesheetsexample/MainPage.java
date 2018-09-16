@@ -126,6 +126,22 @@ public class MainPage extends AppCompatActivity{
 
         }
 
+        switch (MenuName) {
+            case "WACCDetailedPageModelInputsOne":
+                Intent i = new Intent(getApplicationContext(), WACCDetailedPageModelInputsOne.class);
+                startActivity(i);
+                break;
+
+        }
+
+        switch (MenuName) {
+            case "WACCDetailedPageModelInputsTwo":
+                Intent i = new Intent(getApplicationContext(), WACCDetailedPageModelInputsTwo.class);
+                startActivity(i);
+                break;
+
+        }
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
     }
@@ -180,7 +196,7 @@ public class MainPage extends AppCompatActivity{
         childModel = new MenuModel("WACCDetailedPageTwo", false, false);
         childModelsList.add(childModel);
 
-        childModel = new MenuModel("WACCDetailedPageThree", false, false);
+        childModel = new MenuModel("WACCDetailedPageModelInputsOne", false, false);
         childModelsList.add(childModel);
 
 

@@ -52,6 +52,14 @@
             android:name=".WACCDetailedPageTwo"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".WACCDetailedPageModelInputsOne"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".WACCDetailedPageModelInputsTwo"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
     </application>
 
