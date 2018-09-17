@@ -24,10 +24,28 @@ public class PopUpWindow extends Activity{
         int height = displayMetrics.heightPixels;
 
         Intent intent = getIntent();
-        String message = intent.getStringExtra("message");
+        String message = intent.getStringExtra("flagExcelViewer");
 
-        TVmessage = (TextView)  findViewById(R.id.PopUpMessage);
-        TVmessage.setText(message);
+        if (message.equals("false")) {
+            intent = getIntent();
+            message = intent.getStringExtra("message");
+
+            TVmessage = (TextView)  findViewById(R.id.PopUpMessage);
+            TVmessage.setText(message);
+        }
+        else if (message.equals("true")) {
+
+
+
+        }
+        //TODO troubleshoot here if the flag does not contain either message
+        else {
+
+        }
+
+
+
+
 
 
         getWindow().setLayout((int) (width*.85), (int) (height *.85));

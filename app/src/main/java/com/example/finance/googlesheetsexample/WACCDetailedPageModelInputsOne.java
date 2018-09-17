@@ -36,6 +36,8 @@ public class WACCDetailedPageModelInputsOne extends AppCompatActivity {
     private TextView WACCDetailedPageModelInputsOneAnnualRevenueGrowthRateButton;
     private boolean WACCDetailedPageModelInputsOneAnnualRevenueGrowthRateToTerminalToggleButtonCondition;
 
+
+    //TODO add ability to pull data from website
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +75,8 @@ public class WACCDetailedPageModelInputsOne extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(WACCDetailedPageModelInputsOne.this, PopUpWindow.class);
+
+
 
                 intent.putExtra("message", "test");
 
@@ -238,19 +242,6 @@ public class WACCDetailedPageModelInputsOne extends AppCompatActivity {
 
 
 
-        //        WACCDetailedPageModelInputsOneNumberForecastPeriods.setOnLongClickListener(new View.OnLongClickListener() {
-//            @Override
-//            public boolean onLongClick(View v) {
-//
-//                Intent intent = new Intent(WACCDetailedPageModelInputsOne.this, PopUpWindow.class);
-//
-//                intent.putExtra("message", "test");
-//
-//                startActivity(intent);
-//                return false;
-//            }
-//
-//        });
     }
 
 

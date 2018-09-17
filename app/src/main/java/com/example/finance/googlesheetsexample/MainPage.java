@@ -199,6 +199,9 @@ public class MainPage extends AppCompatActivity{
         childModel = new MenuModel("WACCDetailedPageModelInputsOne", false, false);
         childModelsList.add(childModel);
 
+        childModel = new MenuModel("WACCDetailedPageModelInputsTwo", false, false);
+        childModelsList.add(childModel);
+
 
         if (menuModel.hasChildren) {
             Log.d("API123","here");
