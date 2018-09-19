@@ -62,7 +62,11 @@
         android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".WACCDetailedPageCostOfCapital"
-            android:label="@string/app_name"
+            android:label="GoogleSheetsExample"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".WACCDetailedPageTerminalValue"
+            android:label="GoogleSheetsExample"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
     </application>
