@@ -89,7 +89,7 @@ public class WACCDetailedObject {
         AnnualRevenueGrowthPercentage = annualRevenueGrowthPercentage;
     }
 
-    public boolean isRevenueGrowthFadeToTerminalGrowth() {
+    public boolean getRevenueGrowthFadeToTerminalGrowth() {
         return RevenueGrowthFadeToTerminalGrowth;
     }
 
