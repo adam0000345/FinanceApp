@@ -62,17 +62,19 @@ public class WACCDetailedPageTerminalValue extends AppCompatActivity {
 
                 PopUpWindow popUpWindow = new PopUpWindow();
                 //TODO: look into setting text like above way
+                //Logic
                 Intent intent = new Intent(WACCDetailedPageTerminalValue.this, PopUpWindow.class);
-                intent.putExtra("flagPDF", "false");
-                intent.putExtra("message", "This is the sum of all cash and cash" +
-                        "equivalents from the company's balance sheet, as of the end of the " +
-                        "base year of valuation.  Input the most recent value.");
-
-                //
+                intent.putExtra("flagExcelViewer", "false");
+                intent.putExtra("message", "If you chose the option to calculate g using the " +
+                        "formula ROICxRR in the 'Few Key Questions' page, you will input the ROIC assumption here. " +
+                        "Otherwise, it will be grayed out.  If you have a firm with exceptional competitive " +
+                        "advantages, you can input an ROIC that is higher than your cost of capital.");
 
                 startActivity(intent);
 
             }
+
+
 
         });
 
@@ -93,31 +95,19 @@ public class WACCDetailedPageTerminalValue extends AppCompatActivity {
 
                 //Logic
                 Intent intent = new Intent(WACCDetailedPageTerminalValue.this, PopUpWindow.class);
+
                 intent.putExtra("flagExcelViewer", "false");
-                intent.putExtra("message", "WACC is 'weighted average cost of capital.'" +
-                        "It captures the idea that we must provide a 'fair' rate of return " +
-                        "to each type of investor in our business, weighted by the proportion " +
-                        "in which they are supplying its capital.  This rate is determined by the " +
-                        "return on risk-equivalent assets - the notion is that, when investors " +
-                        "give us their money, they are foregoing the opportunity to earn a " +
-                        "risk-equivalent rate of return elsewhere; i.e., they are incurring " +
-                        "an opportunity cost to the use of their capital." +
-                        "\n\nCapital is of two types: owners' money (Equity, E) or borrowed money " +
-                        "(Debt, D). If E expects a return rE, and D expects rD, and " +
-                        "'f' is the tax rate, then WACC is defined as: " +
-                        "\n\nWACC = rE x (E/(D+E)) + rD X (1-t) x (D/(D+E)) " +
-                        "\n\nWe multiply rD by (1-t) to reflect the fact that tax laws " +
-                        "allow for interest payments to debtholders to be deducted as a cost of " +
-                        "doing business (while divdend payments to equityholders, with " +
-                        "occasional exceptions, are not).  As a result, the true cost of " +
-                        "borrowing is not all of rD, but the after-tax rD.  This provision" +
-                        "in the tax laws is said to provide a 'tax shield benefit' to " +
-                        "the company.");
+                intent.putExtra("message", "If you chose the option to calculate g using the " +
+                        "formula ROICxRR in the 'Few Key Questions' page, you will input the reinvestment rate (RR) " +
+                        "assumption here.  Otherwise, it will be grayed out.  Enter an RR that is consistent with a g " +
+                        "equal to rF or to the long-run nominal growth rate of GDP.");
+
+                startActivity(intent);
 
                 //
 
 
-                startActivity(intent);
+
 
 
             }
@@ -143,30 +133,26 @@ public class WACCDetailedPageTerminalValue extends AppCompatActivity {
                 //Logic
                 Intent intent = new Intent(WACCDetailedPageTerminalValue.this, PopUpWindow.class);
                 intent.putExtra("flagExcelViewer", "false");
-                intent.putExtra("message", "WACC is 'weighted average cost of capital.'" +
-                        "It captures the idea that we must provide a 'fair' rate of return " +
-                        "to each type of investor in our business, weighted by the proportion " +
-                        "in which they are supplying its capital.  This rate is determined by the " +
-                        "return on risk-equivalent assets - the notion is that, when investors " +
-                        "give us their money, they are foregoing the opportunity to earn a " +
-                        "risk-equivalent rate of return elsewhere; i.e., they are incurring " +
-                        "an opportunity cost to the use of their capital." +
-                        "\n\nCapital is of two types: owners' money (Equity, E) or borrowed money " +
-                        "(Debt, D). If E expects a return rE, and D expects rD, and " +
-                        "'f' is the tax rate, then WACC is defined as: " +
-                        "\n\nWACC = rE x (E/(D+E)) + rD X (1-t) x (D/(D+E)) " +
-                        "\n\nWe multiply rD by (1-t) to reflect the fact that tax laws " +
-                        "allow for interest payments to debtholders to be deducted as a cost of " +
-                        "doing business (while divdend payments to equityholders, with " +
-                        "occasional exceptions, are not).  As a result, the true cost of " +
-                        "borrowing is not all of rD, but the after-tax rD.  This provision" +
-                        "in the tax laws is said to provide a 'tax shield benefit' to " +
-                        "the company.");
+                intent.putExtra("message", "Terminal Value (TV) is the continuing value of " +
+                        "the business after the detailed forecast (or, 'proforma') period ends.  It is " +
+                        "calculated using the constant growth model: \n\n TV = FCFFr + (WACCr-g), \n\n" +
+                        "where FCFFr is the cash flow in the first period after the forecast period ends " +
+                        "(if the forecast period is seven years, this year 8), WACCr is the cost of capital " +
+                        "in perpetuity after the forecast period, and g is the Terminal Growth Rate (the growth " +
+                        "rate in free cash flow in perptuity).\n\nThe enterprise value, EV, is the present value " +
+                        "of TV plus the present value of cash flows for each year of the proforma period. \n\n" +
+                        "Some analysts use multiples (e.g. EV/EBITDA, EV/SALES) to estimate TV.  However, g is " +
+                        "implicit (and therefore, hidden) in a multiple, while it is made explicit in the " +
+                        "constant growth model.  Moreover, the danger with using this approach is that it undercuts " +
+                        "the very notion of this being a discounted cash flow or an intrinsic valuation, and makes " +
+                        "this instead a relative valuation.");
+
+                startActivity(intent);
 
                 //
 
 
-                startActivity(intent);
+
 
 
             }
@@ -192,25 +178,9 @@ public class WACCDetailedPageTerminalValue extends AppCompatActivity {
                 //Logic
                 Intent intent = new Intent(WACCDetailedPageTerminalValue.this, PopUpWindow.class);
                 intent.putExtra("flagExcelViewer", "false");
-                intent.putExtra("message", "WACC is 'weighted average cost of capital.'" +
-                        "It captures the idea that we must provide a 'fair' rate of return " +
-                        "to each type of investor in our business, weighted by the proportion " +
-                        "in which they are supplying its capital.  This rate is determined by the " +
-                        "return on risk-equivalent assets - the notion is that, when investors " +
-                        "give us their money, they are foregoing the opportunity to earn a " +
-                        "risk-equivalent rate of return elsewhere; i.e., they are incurring " +
-                        "an opportunity cost to the use of their capital." +
-                        "\n\nCapital is of two types: owners' money (Equity, E) or borrowed money " +
-                        "(Debt, D). If E expects a return rE, and D expects rD, and " +
-                        "'f' is the tax rate, then WACC is defined as: " +
-                        "\n\nWACC = rE x (E/(D+E)) + rD X (1-t) x (D/(D+E)) " +
-                        "\n\nWe multiply rD by (1-t) to reflect the fact that tax laws " +
-                        "allow for interest payments to debtholders to be deducted as a cost of " +
-                        "doing business (while divdend payments to equityholders, with " +
-                        "occasional exceptions, are not).  As a result, the true cost of " +
-                        "borrowing is not all of rD, but the after-tax rD.  This provision" +
-                        "in the tax laws is said to provide a 'tax shield benefit' to " +
-                        "the company.");
+                intent.putExtra("message", "You can choose to input a long-run terminal WACC " +
+                        "that is different from the default WACC, which is the cost of capital for the proforma period. " +
+                        "One option may be the industry average.  Another, the market average.");
 
                 //
 

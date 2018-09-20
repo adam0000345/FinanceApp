@@ -68,6 +68,10 @@
             android:name=".WACCDetailedPageTerminalValue"
             android:label="GoogleSheetsExample"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".WACCDetailedPageResults"
+            android:label="GoogleSheetsExample"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
     </application>
 
