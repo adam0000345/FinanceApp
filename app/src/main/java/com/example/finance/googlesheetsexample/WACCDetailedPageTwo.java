@@ -5,10 +5,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ExpandableListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -16,11 +17,12 @@ import android.widget.TextView;
 import com.facebook.drawee.backends.pipeline.Fresco;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-public class WACCDetailedPageTwo extends AppCompatActivity {
+public class WACCDetailedPageTwo extends NavBarAndTitle {
 
-    private DrawerLayout mDrawerLayout;
+
     private TextView WACCDetailedPageTwoTitle;
     private TextView WACCDetailedPageTwoOperatingIncome;
     private Spinner WACCPageTwoOperatingIncomeSpinner;
@@ -36,17 +38,13 @@ public class WACCDetailedPageTwo extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.waccdetailedpagetwo);
 
-        Fresco.initialize(this);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        ActionBar actionbar = getSupportActionBar();
-        //actionbar.setDisplayHomeAsUpEnabled(true);
-        //actionbar.setHomeAsUpIndicator(R.drawable.baseline_menu_black_18dp);
+        getLayoutInflater().inflate(R.layout.waccdetailedpagetwo,
+                frameLayout);
 
-        mDrawerLayout = findViewById(R.id.drawer_layout);
+
+
         WACCDetailedPageTwoOperatingIncome = (TextView) this.findViewById(R.id.WACCDetailedPageTwoOperatingIncome);
         WACCDetailedPageTwoDepreciation = (TextView) this.findViewById(R.id.WACCDetailedPageTwoDepreciation);
         WACCDetailedPageTwoWACC = (TextView) this.findViewById(R.id.WACCDetailedPageTwoWACC);
@@ -261,7 +259,19 @@ public class WACCDetailedPageTwo extends AppCompatActivity {
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         WACCPageTwoOperatingIncomeSpinner.setAdapter(dataAdapter);
 
-        addListenerOnSpinnerItemSelection(WACCPageTwoOperatingIncomeSpinner);
+
+        WACCPageTwoOperatingIncomeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                Object item = parent.getItemAtPosition(pos);
+                String text = item.toString();
+                getWaccDetailedObject().setOperatingIncomeOption(text);
+            }
+            public void onNothingSelected(AdapterView<?> parent) {
+                return;
+            }
+        });
+
+
     }
 
     // add items into spinner dynamically
@@ -279,7 +289,18 @@ public class WACCDetailedPageTwo extends AppCompatActivity {
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         WACCDetailedPageTwoDepreciationSpinner.setAdapter(dataAdapter);
 
-        addListenerOnSpinnerItemSelection(WACCDetailedPageTwoDepreciationSpinner);
+
+
+        WACCDetailedPageTwoDepreciationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                Object item = parent.getItemAtPosition(pos);
+                String text = item.toString();
+                getWaccDetailedObject().setDepreciationOption(text);
+            }
+            public void onNothingSelected(AdapterView<?> parent) {
+                return;
+            }
+        });
     }
 
     // add items into spinner dynamically
@@ -297,7 +318,18 @@ public class WACCDetailedPageTwo extends AppCompatActivity {
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         WACCDetailedPageTwoWACCSpinner.setAdapter(dataAdapter);
 
-        addListenerOnSpinnerItemSelection(WACCDetailedPageTwoWACCSpinner);
+
+
+        WACCDetailedPageTwoWACCSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                Object item = parent.getItemAtPosition(pos);
+                String text = item.toString();
+                getWaccDetailedObject().setWACCOption(text);
+            }
+            public void onNothingSelected(AdapterView<?> parent) {
+                return;
+            }
+        });
     }
 
     // add items into spinner dynamically
@@ -316,10 +348,19 @@ public class WACCDetailedPageTwo extends AppCompatActivity {
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         WACCDetailedPageTwoTerminalGrowthRateSpinner.setAdapter(dataAdapter);
 
-        addListenerOnSpinnerItemSelection(WACCDetailedPageTwoTerminalGrowthRateSpinner);
+       
+
+        WACCDetailedPageTwoTerminalGrowthRateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                Object item = parent.getItemAtPosition(pos);
+                String text = item.toString();
+                getWaccDetailedObject().setTerminalGrowthRateOption(text);
+            }
+            public void onNothingSelected(AdapterView<?> parent) {
+                return;
+            }
+        });
     }
 
-    public void addListenerOnSpinnerItemSelection(Spinner SpinnerObject) {
-        SpinnerObject.setOnItemSelectedListener(new CustomOnItemSelectedListener());
-    }
+
 }

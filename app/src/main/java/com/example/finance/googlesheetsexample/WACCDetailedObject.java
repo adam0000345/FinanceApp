@@ -1,6 +1,9 @@
 package com.example.finance.googlesheetsexample;
 
-public class WACCDetailedObject {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class WACCDetailedObject{
 
     private String OperatingIncomeOption;
     private String DepreciationOption;
@@ -105,7 +108,6 @@ public class WACCDetailedObject {
     public void setCostOfGoodsSoldAsPercentage(double costOfGoodsSoldAsPercentage) {
         CostOfGoodsSoldAsPercentage = costOfGoodsSoldAsPercentage;
     }
-
 
 
 

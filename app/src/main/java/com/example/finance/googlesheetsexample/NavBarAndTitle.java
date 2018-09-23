@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.support.v7.widget.Toolbar;
 import android.widget.ExpandableListView;
+import android.widget.FrameLayout;
 
 import com.example.finance.googlesheetsexample.post.PostData;
 
@@ -24,21 +25,30 @@ import java.util.List;
 /**
  * Created by ADJ on 2/21/2017.
  */
-public class MainPage extends AppCompatActivity{
+public class NavBarAndTitle extends AppCompatActivity{
 
     Button getData;
     Button sendData;
+    FrameLayout frameLayout;
     ExpandableListAdapter expandableListAdapter;
     ExpandableListView expandableListView;
     List<MenuModel> headerList = new ArrayList<>();
     HashMap<MenuModel, List<MenuModel>> childList = new HashMap<>();
+    /**
+     *  This flag is used just to check that launcher activity is called first time
+     *  so that we can open appropriate Activity on launch and make list item position selected accordingly.
+     * */
+    private static boolean isLaunch = true;
+
+
+    private WACCDetailedObject waccDetailedObject;
 
 
     private DrawerLayout mDrawerLayout;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mainmenu);
+        setContentView(R.layout.navbarandtitle);
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -46,6 +56,10 @@ public class MainPage extends AppCompatActivity{
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.baseline_menu_black_18dp);
+        frameLayout = (FrameLayout)findViewById(R.id.content_frame);
+
+        waccDetailedObject = new WACCDetailedObject();
+
 
         expandableListView = findViewById(R.id.expandableListView);
 
@@ -83,8 +97,23 @@ public class MainPage extends AppCompatActivity{
 
                 });
 
+        if(isLaunch){
+            /**
+             *Setting this flag false so that next time it will not open our first activity.
+             *We have to use this flag because we are using this BaseActivity as parent activity to our other activity.
+             *In this case this base activity will always be call when any child activity will launch.
+             */
+            isLaunch = false;
+            Intent intent = new Intent(getApplicationContext(), MainMenu.class);
+            startActivity(intent);
+        }
+
 
     };
+
+    public  WACCDetailedObject getWaccDetailedObject(){
+        return waccDetailedObject;
+    }
 
     @Override
     public void onBackPressed() {
@@ -143,8 +172,16 @@ public class MainPage extends AppCompatActivity{
         }
 
         switch (MenuName) {
-            case "WACCDetailedPageCostOfCapital":
-                Intent i = new Intent(getApplicationContext(), WACCDetailedPageCostOfCapital.class);
+            case "WACCDetailedPageCostOfCapitalOne":
+                Intent i = new Intent(getApplicationContext(), WACCDetailedPageCostOfCapitalOne.class);
+                startActivity(i);
+                break;
+
+        }
+
+        switch (MenuName) {
+            case "WACCDetailedPageCostOfCapitalTwo":
+                Intent i = new Intent(getApplicationContext(), WACCDetailedPageCostOfCapitalTwo.class);
                 startActivity(i);
                 break;
 
@@ -211,7 +248,7 @@ public class MainPage extends AppCompatActivity{
             childList.put(menuModel, null);
         }
 
-        menuModel = new MenuModel("WACCDetailedPageOne", true, true);
+        menuModel = new MenuModel("WACCDetailed", true, true);
         headerList.add(menuModel);
         List<MenuModel> childModelsList = new ArrayList<>();
         MenuModel childModel = new MenuModel("WACCDetailedPageOne", false, false);
@@ -226,7 +263,10 @@ public class MainPage extends AppCompatActivity{
         childModel = new MenuModel("WACCDetailedPageModelInputsTwo", false, false);
         childModelsList.add(childModel);
 
-        childModel = new MenuModel("WACCDetailedPageCostOfCapital", false, false);
+        childModel = new MenuModel("WACCDetailedPageCostOfCapitalOne", false, false);
+        childModelsList.add(childModel);
+
+        childModel = new MenuModel("WACCDetailedPageCostOfCapitalOne", false, false);
         childModelsList.add(childModel);
 
         childModel = new MenuModel("WACCDetailedPageTerminalValue", false, false);
@@ -318,11 +358,11 @@ public class MainPage extends AppCompatActivity{
 
                 if (childList.get(headerList.get(groupPosition)) != null) {
                     MenuModel model = childList.get(headerList.get(groupPosition)).get(childPosition);
-                        //WebView webView = findViewById(R.id.webView);
-                        //webView.loadUrl(model.url);
-                        displaySelectedScreen(model.menuName);
+                    //WebView webView = findViewById(R.id.webView);
+                    //webView.loadUrl(model.url);
+                    displaySelectedScreen(model.menuName);
 
-                        onBackPressed();
+                    onBackPressed();
 
                 }
 
@@ -334,3 +374,4 @@ public class MainPage extends AppCompatActivity{
 
 
 }
+

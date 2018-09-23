@@ -2,37 +2,22 @@ package com.example.finance.googlesheetsexample;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 //test
-import com.facebook.drawee.backends.pipeline.Fresco;
 
-public class WACCDetailedPageCostOfCapital extends AppCompatActivity {
 
-    private DrawerLayout mDrawerLayout;
-    private TextView WACCDetailedPageCostOfCapitalTitle;
-    private TextView WACCDetailedPageCostOfCapitalSubTitle;
-    private TextView WACCDetailedPageCostOfCapitalCash;
-    private TextView WACCDetailedPageCostOfCapitalDebt;
-    private TextView WACCDetailedPageCostOfCapitalMarketCap;
-    private TextView WACCDetailedPageCostOfCapitalEquityBeta;
-    private TextView WACCDetailedPageCostOfCapitalRiskFreeRate;
+public class WACCDetailedPageCostOfCapitalTwo extends NavBarAndTitle {
+
+
     private TextView WACCDetailedPageCostOfCapitalMarketRiskPremium;
     private TextView WACCDetailedPageCostOfCapitalLeveredCostOfEquity;
     private TextView WACCDetailedPageCostOfCapitalCostOfDebt;
     private TextView WACCDetailedPageCostOfCapitalWeightedAverageCostOfCapital;
     private TextView WACCDetailedPageCostOfCapitalNumberOfShares;
 
-    private TextView WACCDetailedPageCostOfCapitalCashValue;
-    private TextView WACCDetailedPageCostOfCapitalDebtValue;
-    private TextView WACCDetailedPageCostOfCapitalMarketCapValue;
-    private TextView WACCDetailedPageCostOfCapitalEquityBetaValue;
-    private TextView WACCDetailedPageCostOfCapitalRiskFreeRateValue;
+
     private TextView WACCDetailedPageCostOfCapitalMarketRiskPremiumValue;
     private TextView WACCDetailedPageCostOfCapitalLeveredCostOfEquityValue;
     private TextView WACCDetailedPageCostOfCapitalCostOfDebtValue;
@@ -44,189 +29,11 @@ public class WACCDetailedPageCostOfCapital extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.waccdetailedpagecostofcapital);
-
-        Fresco.initialize(this);
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        ActionBar actionbar = getSupportActionBar();
-        //actionbar.setDisplayHomeAsUpEnabled(true);
-        //actionbar.setHomeAsUpIndicator(R.drawable.baseline_menu_black_18dp);
-
-        mDrawerLayout = findViewById(R.id.drawer_layout);
-
-        //textView = (TextView) this.findViewById(R.id.WACCTextView);
 
 
-        WACCDetailedPageCostOfCapitalTitle = (TextView) this.findViewById(R.id.
-                WACCDetailedPageCostOfCapitalTitle);
-        WACCDetailedPageCostOfCapitalTitle.setText("'WACC: Detailed' Model Inputs: Cost of Capital " +
-                "and Terminal Value");
-
-        WACCDetailedPageCostOfCapitalSubTitle = (TextView) this.findViewById(R.id.
-                WACCDetailedPageCostOfCapitalSubTitle);
-        WACCDetailedPageCostOfCapitalSubTitle.setText("COST OF CAPITAL");
+        getLayoutInflater().inflate(R.layout.waccdetailedpagecostofcapitaltwo, frameLayout);
 
 
-        WACCDetailedPageCostOfCapitalCash = (TextView) this.
-                findViewById(R.id.WACCDetailedPageCostOfCapitalCash);
-        WACCDetailedPageCostOfCapitalCash.setText("Cash (C: $millions)");
-
-        WACCDetailedPageCostOfCapitalCash.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                PopUpWindow popUpWindow = new PopUpWindow();
-                //TODO: look into setting text like above way
-                Intent intent = new Intent(WACCDetailedPageCostOfCapital.this, PopUpWindow.class);
-                intent.putExtra("flagExcelViewer", "false");
-                intent.putExtra("message", "This is the sum of all cash and cash" +
-                        "equivalents from the company's balance sheet, as of the end of the " +
-                        "base year of valuation.  Input the most recent value.");
-
-                //
-
-                startActivity(intent);
-
-            }
-
-        });
-
-        WACCDetailedPageCostOfCapitalCashValue =
-                (EditText) this.findViewById(R.id.WACCDetailedPageCostOfCapitalCashValue);
-
-        WACCDetailedPageCostOfCapitalDebt = (TextView) this.findViewById(R.id.WACCDetailedPageCostOfCapitalDebt);
-        WACCDetailedPageCostOfCapitalDebt.setText("Debt (D: $ millions)");
-
-        //TODO: Get subscripts to work properly
-        WACCDetailedPageCostOfCapitalDebt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                //Logic
-                Intent intent = new Intent(WACCDetailedPageCostOfCapital.this, PopUpWindow.class);
-                intent.putExtra("flagExcelViewer", "false");
-                intent.putExtra("message", "This is, at a minimum, the sum of all" +
-                        " interest-bearing debt - i.e., short-term debt, plus current portion of" +
-                        " long-term debt, plus long-term debt.  In addition, it may include " +
-                        "the capitalized value of long-term leases.");
-
-                //
-
-
-
-                startActivity(intent);
-
-
-            }
-
-        });
-
-        WACCDetailedPageCostOfCapitalDebtValue =
-                (EditText) this.findViewById(R.id.WACCDetailedPageCostOfCapitalDebtValue);
-
-        WACCDetailedPageCostOfCapitalMarketCap = (TextView)
-                this.findViewById(R.id.WACCDetailedPageCostOfCapitalMarketCap);
-        WACCDetailedPageCostOfCapitalMarketCap.setText("Market capitalization \n(E: $millions)");
-
-        WACCDetailedPageCostOfCapitalMarketCap
-                .setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        //Logic
-                        Intent intent = new Intent(WACCDetailedPageCostOfCapital.this, PopUpWindow.class);
-                        intent.putExtra("flagExcelViewer", "false");
-                        intent.putExtra("message", "Market capitalization is" +
-                                " the total market value of all common equity in your firm. " +
-                                "While multiplying the current share price by the number of shares " +
-                                "will usually give you this number, you should add the value of all" +
-                                "classes of common stock (even non-traded common stock, with an estimated" +
-                                "value per share).");
-
-                        startActivity(intent);
-
-                    }
-
-                });
-
-        WACCDetailedPageCostOfCapitalMarketCapValue =
-                (EditText) this.findViewById(R.id.WACCDetailedPageCostOfCapitalMarketCapValue);
-
-
-
-        //Equity Beta
-
-        WACCDetailedPageCostOfCapitalEquityBeta = (TextView)
-                this.findViewById(R.id.WACCDetailedPageCostOfCapitalEquityBeta);
-        WACCDetailedPageCostOfCapitalEquityBeta.setText("Equity beta ß)");
-
-        WACCDetailedPageCostOfCapitalEquityBeta
-                .setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        //Logic
-                        Intent intent = new Intent(WACCDetailedPageCostOfCapital.this, PopUpWindow.class);
-                        intent.putExtra("flagExcelViewer", "false");
-                        intent.putExtra("message", "Equity beta (ßE) measures " +
-                                "the sensitivity of a stock's expected returns to that of the " +
-                                "market as a whole.  It measures the expected percent change in " +
-                                "the value of an asset or every 1% change in the market index.  " +
-                                "For instance, a stock with a ßE = 1.5 would be expected to go up, " +
-                                "on average, by 1.5% for every 1% increase in the value of the market.  " +
-                                "It is derived from the Capital Asset Pricing Model (CAPM), which " +
-                                "says that the expected return on equity, rE, is: \n\n" +
-                                "rE = rF + ßE x MRP \n\n where rF is the risk-free rate or return " +
-                                "(proxied by yield on long-run US goverment Treasury bonds), " +
-                                "ßE is as as above, and MRP the 'market risk premium' or " +
-                                "'equity risk premium' is the excess return that investors demand to " +
-                                " put their money into a diversified portfolio of stocks relative to a " +
-                                "safe asset such as US government Treasury bonds (rF).  \n\n" +
-                                "You can use the beta that you find for your company on a service (YahooFinance," +
-                                " Value Line, etc.). In many instances, a better choice may be an " +
-                                "industry average.");
-
-                        startActivity(intent);
-
-                    }
-
-                });
-
-        WACCDetailedPageCostOfCapitalEquityBetaValue =
-                (EditText) this.findViewById(R.id.WACCDetailedPageCostOfCapitalEquityBetaValue);
-
-        //Risk-free rate (rF: %)
-
-        WACCDetailedPageCostOfCapitalRiskFreeRate = (TextView)
-                this.findViewById(R.id.WACCDetailedPageCostOfCapitalRiskFreeRate);
-        WACCDetailedPageCostOfCapitalRiskFreeRate.setText("Risk-free rate (rF: %)");
-
-        WACCDetailedPageCostOfCapitalRiskFreeRate
-                .setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        //Logic
-
-                        Intent intent = new Intent(WACCDetailedPageCostOfCapital.this, PopUpWindow.class);
-                        intent.putExtra("flagExcelViewer", "false");
-                        intent.putExtra("message", "This is proxied by the yield" +
-                        "on long-term US government Treasury bonds. It is recommended using at least a " +
-                                "10-year bond, perhaps even a 30-year bond if you're " +
-                                "assuming a constant long-run MRP.  In Euros, use German " +
-                                "government bonds.  In other currencies, proceed with caution.");
-                        startActivity(intent);
-
-
-
-                    }
-
-                });
-
-        WACCDetailedPageCostOfCapitalRiskFreeRateValue =
-                (EditText) this.findViewById(R.id.WACCDetailedPageCostOfCapitalRiskFreeRateValue);
 
         //Market risk premium (MRP: %)
 
@@ -240,7 +47,7 @@ public class WACCDetailedPageCostOfCapital extends AppCompatActivity {
                     public void onClick(View v) {
 
                         //Logic
-                        Intent intent = new Intent(WACCDetailedPageCostOfCapital.this, PopUpWindow.class);
+                        Intent intent = new Intent(WACCDetailedPageCostOfCapitalTwo.this, PopUpWindow.class);
                         intent.putExtra("flagExcelViewer", "false");
                         intent.putExtra("message", "Market risk premium (MRP) " +
                                 "is the excess return that investors demand to put their money" +
@@ -274,7 +81,7 @@ public class WACCDetailedPageCostOfCapital extends AppCompatActivity {
                     public void onClick(View v) {
 
                         //Logic
-                        Intent intent = new Intent(WACCDetailedPageCostOfCapital.this, PopUpWindow.class);
+                        Intent intent = new Intent(WACCDetailedPageCostOfCapitalTwo.this, PopUpWindow.class);
                         intent.putExtra("flagExcelViewer", "false");
                         intent.putExtra("message", "The levered cost of equity, rE, is " +
                                 "calculated using CAPM with the equity beta, ßE:\n\n " +
@@ -308,7 +115,7 @@ public class WACCDetailedPageCostOfCapital extends AppCompatActivity {
                     public void onClick(View v) {
 
                         //Logic
-                        Intent intent = new Intent(WACCDetailedPageCostOfCapital.this, PopUpWindow.class);
+                        Intent intent = new Intent(WACCDetailedPageCostOfCapitalTwo.this, PopUpWindow.class);
                         intent.putExtra("flagExcelViewer", "false");
                         intent.putExtra("message", "Cost of debt, rD, is the answer to the " +
                                 " question: If the company were to go out and issue longer-term bonds today, " +
@@ -340,7 +147,7 @@ public class WACCDetailedPageCostOfCapital extends AppCompatActivity {
                     public void onClick(View v) {
 
                         //Logic
-                        Intent intent = new Intent(WACCDetailedPageCostOfCapital.this, PopUpWindow.class);
+                        Intent intent = new Intent(WACCDetailedPageCostOfCapitalTwo.this, PopUpWindow.class);
                         intent.putExtra("flagExcelViewer", "false");
                         intent.putExtra("message", "WACC is 'weighted average cost of capital.' " +
                                 "It captures the idea that we must provide a 'fair' rate of return to each type of " +
@@ -382,7 +189,7 @@ public class WACCDetailedPageCostOfCapital extends AppCompatActivity {
                     public void onClick(View v) {
 
                         //Logic
-                        Intent intent = new Intent(WACCDetailedPageCostOfCapital.this, PopUpWindow.class);
+                        Intent intent = new Intent(WACCDetailedPageCostOfCapitalTwo.this, PopUpWindow.class);
                         intent.putExtra("flagExcelViewer", "false");
                         intent.putExtra("message", "'This is the total number of common" +
                                 " shares outstanding.");

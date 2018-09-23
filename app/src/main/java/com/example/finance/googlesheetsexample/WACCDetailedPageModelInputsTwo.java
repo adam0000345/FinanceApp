@@ -4,26 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.ToggleButton;
-
-import org.apache.poi.hssf.usermodel.HSSFDateUtil;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellValue;
-import org.apache.poi.ss.usermodel.FormulaEvaluator;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.util.WorkbookUtil;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 
-public class WACCDetailedPageModelInputsTwo extends AppCompatActivity {
+public class WACCDetailedPageModelInputsTwo extends NavBarAndTitle {
 
     private DrawerLayout mDrawerLayout;
     private TextView WACCDetailedPageModelInputsTwoSGA;
@@ -36,8 +24,8 @@ public class WACCDetailedPageModelInputsTwo extends AppCompatActivity {
     private TextView WACCDetailedPageModelInputsTwoCapitalExpenditureValue;
     private TextView WACCDetailedPageModelInputsTwoOperatingNWC;
     private TextView WACCDetailedPageModelInputsTwoOperatingNWCValue;
-    private TextView WACCDetailedPageModelInputsTwoStraightLine;
-    private TextView WACCDetailedPageModelInputsTwoStraightLineValue;
+    private TextView WACCDetailedPageModelInputsTwoStraightLineYears;
+    private TextView WACCDetailedPageModelInputsTwoStraightLineYearsValue;
     private TextView WACCDetailedPageModelInputsTwoTaxRate;
     private TextView WACCDetailedPageModelInputsTwoTaxRateValue;
     private TextView WACCDetailedPageModelInputsTwoBaseYearDepreciation;
@@ -49,18 +37,9 @@ public class WACCDetailedPageModelInputsTwo extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.waccdetailedpagemodelinputstwo);
 
-        Fresco.initialize(this);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        ActionBar actionbar = getSupportActionBar();
-        //actionbar.setDisplayHomeAsUpEnabled(true);
-        //actionbar.setHomeAsUpIndicator(R.drawable.baseline_menu_black_18dp);
-
-        mDrawerLayout = findViewById(R.id.drawer_layout);
-
+        getLayoutInflater().inflate(R.layout.waccdetailedpagemodelinputstwo, frameLayout);
 
 
 
@@ -109,7 +88,7 @@ public class WACCDetailedPageModelInputsTwo extends AppCompatActivity {
         WACCDetailedPageModelInputsTwoInitialEBIT
                 = (TextView) this.findViewById(R.id.WACCDetailedPageModelInputsTwoInitialEBIT);
 
-        WACCDetailedPageModelInputsTwoInitialEBIT.setText("Initial EBIT as % revenue");
+        WACCDetailedPageModelInputsTwoInitialEBIT.setText("Initial EBIT as % revenue (Operating Income)");
 
         WACCDetailedPageModelInputsTwoInitialEBIT.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -149,7 +128,7 @@ public class WACCDetailedPageModelInputsTwo extends AppCompatActivity {
 
         WACCDetailedPageModelInputsTwoLastPeriodEBIT = (TextView) this.findViewById(R.id.WACCDetailedPageModelInputsTwoLastPeriodEBIT);
 
-        WACCDetailedPageModelInputsTwoLastPeriodEBIT.setText("Last-period EBIT as % revenue");
+        WACCDetailedPageModelInputsTwoLastPeriodEBIT.setText("Last-period/last year EBIT as % revenue");
 
         WACCDetailedPageModelInputsTwoLastPeriodEBIT.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -189,7 +168,7 @@ public class WACCDetailedPageModelInputsTwo extends AppCompatActivity {
 
         WACCDetailedPageModelInputsTwoCapitalExpenditure = (TextView) this.findViewById(R.id.WACCDetailedPageModelInputsTwoCapitalExpenditure);
 
-        WACCDetailedPageModelInputsTwoCapitalExpenditure.setText("Capital expenditure as % revenue");
+        WACCDetailedPageModelInputsTwoCapitalExpenditure.setText("Capital expenditure as % revenue (Capex)");
 
         WACCDetailedPageModelInputsTwoCapitalExpenditure.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -225,7 +204,8 @@ public class WACCDetailedPageModelInputsTwo extends AppCompatActivity {
 
         WACCDetailedPageModelInputsTwoOperatingNWC = (TextView) this.findViewById(R.id.WACCDetailedPageModelInputsTwoOperatingNWC );
 
-        WACCDetailedPageModelInputsTwoOperatingNWC.setText("Operating NWC as % revenue");
+        WACCDetailedPageModelInputsTwoOperatingNWC.setText("Operating NWC (Non-cash working capital)" +
+                " as % revenue");
 
         WACCDetailedPageModelInputsTwoOperatingNWC.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -240,33 +220,17 @@ public class WACCDetailedPageModelInputsTwo extends AppCompatActivity {
 
         });
 
-        WACCDetailedPageModelInputsTwoOperatingNWC.setOnLongClickListener(new View.OnLongClickListener() {
-
-            @Override
-            public boolean onLongClick(View v) {
-                Intent intent = new Intent(WACCDetailedPageModelInputsTwo.this, pdf_viewer.class);
-
-
-
-                startActivity(intent);
-                return false;
-            }
-
-
-
-
-        });
-
         WACCDetailedPageModelInputsTwoOperatingNWCValue
                 = (EditText) this.findViewById(R.id.WACCDetailedPageModelInputsTwoOperatingNWCValue);
 
         //Straight-line depreciation rule
+        //Straight-line method; Depreciation Expense = Depreciable Amount/ Useful Life
 
-        WACCDetailedPageModelInputsTwoStraightLine = (TextView) this.findViewById(R.id.WACCDetailedPageModelInputsTwoStraightLine );
+        WACCDetailedPageModelInputsTwoStraightLineYears = (TextView) this.findViewById(R.id.WACCDetailedPageModelInputsTwoStraightLineYears);
 
-        WACCDetailedPageModelInputsTwoStraightLine.setText("Straight-line depreciation rule (#years)");
+        WACCDetailedPageModelInputsTwoStraightLineYears.setText("Straight-line depreciation rule (#years)");
 
-        WACCDetailedPageModelInputsTwoStraightLine.setOnClickListener(new View.OnClickListener() {
+        WACCDetailedPageModelInputsTwoStraightLineYears.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(WACCDetailedPageModelInputsTwo.this, PopUpWindow.class);
@@ -279,24 +243,8 @@ public class WACCDetailedPageModelInputsTwo extends AppCompatActivity {
 
         });
 
-        WACCDetailedPageModelInputsTwoStraightLine.setOnLongClickListener(new View.OnLongClickListener() {
 
-            @Override
-            public boolean onLongClick(View v) {
-                Intent intent = new Intent(WACCDetailedPageModelInputsTwo.this, pdf_viewer.class);
-
-
-
-                startActivity(intent);
-                return false;
-            }
-
-
-
-
-        });
-
-        WACCDetailedPageModelInputsTwoStraightLineValue
+        WACCDetailedPageModelInputsTwoStraightLineYearsValue
                 = (EditText) this.findViewById(R.id.WACCDetailedPageModelInputsTwoStraightLineValue);
 
         //Tax rate

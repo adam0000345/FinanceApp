@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainPage"
+            android:name=".NavBarAndTitle"
             android:label="Financial Modeling App"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -26,15 +26,15 @@
         </activity>
         <activity
             android:name=".post.PostData"
-            android:label="@string/app_name"
+            android:label="Financial Modeling App"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".UserList"
-            android:label="@string/app_name"
+            android:label="Financial Modeling App"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".EquityValueFirmValue"
-            android:label="@string/app_name"
+            android:label="Financial Modeling App"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".PopUpWindow"
@@ -42,7 +42,7 @@
             android:theme="@style/AppTheme.CustomBackground"></activity>
         <activity
             android:name=".WACCDetailedPageOne"
-            android:label="@string/app_name"
+            android:label="Financial Modeling App"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".pdf_viewer"
@@ -50,27 +50,35 @@
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".WACCDetailedPageTwo"
-            android:label="@string/app_name"
+            android:label="Financial Modeling App"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".WACCDetailedPageModelInputsOne"
-            android:label="@string/app_name"
+            android:label="Financial Modeling App"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
         android:name=".WACCDetailedPageModelInputsTwo"
-        android:label="@string/app_name"
+        android:label="Financial Modeling App"
         android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".WACCDetailedPageCostOfCapital"
-            android:label="GoogleSheetsExample"
+            android:name=".WACCDetailedPageCostOfCapitalOne"
+            android:label="Financial Modeling App"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".WACCDetailedPageCostOfCapitalOne"
+            android:label="Financial Modeling App"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".WACCDetailedPageTerminalValue"
-            android:label="GoogleSheetsExample"
+            android:label="Financial Modeling App"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".WACCDetailedPageResults"
-            android:label="GoogleSheetsExample"
+            android:label="Financial Modeling App"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".MainMenu"
+            android:label="Financial Modeling App"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
     </application>

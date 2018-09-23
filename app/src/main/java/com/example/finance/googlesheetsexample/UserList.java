@@ -1,7 +1,6 @@
 package com.example.finance.googlesheetsexample;
 
 import android.app.ProgressDialog;
-import android.media.audiofx.DynamicsProcessing;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,7 +11,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
@@ -37,7 +35,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class UserList extends AppCompatActivity {
+public class UserList extends NavBarAndTitle {
 
     private ListView listView;
     private ArrayList<MyDataModel> list;
@@ -51,7 +49,7 @@ public class UserList extends AppCompatActivity {
         Fresco.initialize(this);
 
         //!!!!!!!!!!!!!FORMAT THIS EVENTUALLY!!!!!!!!!!!!!!!!!!!!!
-        //Below is repeat code from the MainPage, MainPage and Userlist use
+        //Below is repeat code from the NavBarAndTitle, NavBarAndTitle and Userlist use
         //the same code as below, see if there is a way to condense this
 
         Toolbar toolbar = findViewById(R.id.toolbar);
