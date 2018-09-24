@@ -348,7 +348,7 @@ public class WACCDetailedPageTwo extends NavBarAndTitle {
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         WACCDetailedPageTwoTerminalGrowthRateSpinner.setAdapter(dataAdapter);
 
-       
+
 
         WACCDetailedPageTwoTerminalGrowthRateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
