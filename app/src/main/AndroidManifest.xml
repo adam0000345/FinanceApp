@@ -65,7 +65,7 @@
             android:label="Financial Modeling App"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".WACCDetailedPageCostOfCapitalOne"
+            android:name=".WACCDetailedPageCostOfCapitalTwo"
             android:label="Financial Modeling App"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity

@@ -362,5 +362,4 @@ public class WACCDetailedPageTwo extends NavBarAndTitle {
         });
     }
 
-
 }

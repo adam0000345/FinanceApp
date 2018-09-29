@@ -56,7 +56,7 @@ import java.util.Iterator;
 import javax.net.ssl.HttpsURLConnection;
 
 
-public class EquityValueFirmValue extends AppCompatActivity {
+public class EquityValueFirmValue extends NavBarAndTitle {
 
 
         TextView tvStockTickerSymbol;
@@ -66,12 +66,15 @@ public class EquityValueFirmValue extends AppCompatActivity {
         private ArrayList<MyDataModel> list;
         private MyArrayAdapter adapter;
         private Snackbar mSnackbar;
+        ////
 
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.equityvaluefirmvalue);
+
+
+            getLayoutInflater().inflate(R.layout.equityvaluefirmvalue, frameLayout);
             //what does Fresco do?
             Fresco.initialize(this);
 

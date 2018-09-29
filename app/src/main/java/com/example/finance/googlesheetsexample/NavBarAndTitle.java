@@ -266,7 +266,7 @@ public class NavBarAndTitle extends AppCompatActivity{
         childModel = new MenuModel("WACCDetailedPageCostOfCapitalOne", false, false);
         childModelsList.add(childModel);
 
-        childModel = new MenuModel("WACCDetailedPageCostOfCapitalOne", false, false);
+        childModel = new MenuModel("WACCDetailedPageCostOfCapitalTwo", false, false);
         childModelsList.add(childModel);
 
         childModel = new MenuModel("WACCDetailedPageTerminalValue", false, false);

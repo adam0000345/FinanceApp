@@ -69,6 +69,20 @@ public class WACCDetailedPageCostOfCapitalTwo extends NavBarAndTitle {
         WACCDetailedPageCostOfCapitalMarketRiskPremiumValue =
                 (EditText) this.findViewById(R.id.WACCDetailedPageCostOfCapitalMarketRiskPremiumValue);
 
+        WACCDetailedPageCostOfCapitalMarketRiskPremiumValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus) {
+                    //SAVE THE DATA
+
+                    getWaccDetailedObject().setRiskFreeRate(
+                            Double.valueOf(WACCDetailedPageCostOfCapitalMarketRiskPremiumValue
+                                    .getText().toString()));
+                    //Log.d("TEST", getWaccDetailedObject().getCompanyName());
+                }
+            }
+        });
+
         //Levered cost of equity
 
         WACCDetailedPageCostOfCapitalLeveredCostOfEquity = (TextView)
@@ -103,6 +117,21 @@ public class WACCDetailedPageCostOfCapitalTwo extends NavBarAndTitle {
         WACCDetailedPageCostOfCapitalLeveredCostOfEquityValue =
                 (EditText) this.findViewById(R.id.WACCDetailedPageCostOfCapitalLeveredCostOfEquityValue);
 
+        WACCDetailedPageCostOfCapitalLeveredCostOfEquityValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus) {
+                    //SAVE THE DATA
+
+                    getWaccDetailedObject().setRiskFreeRate(
+                            Double.valueOf(WACCDetailedPageCostOfCapitalLeveredCostOfEquityValue
+                                    .getText().toString()));
+                    //Log.d("TEST", getWaccDetailedObject().getCompanyName());
+                }
+            }
+        });
+
+
         //Cost of debt
 
         WACCDetailedPageCostOfCapitalCostOfDebt = (TextView)
@@ -133,6 +162,21 @@ public class WACCDetailedPageCostOfCapitalTwo extends NavBarAndTitle {
 
         WACCDetailedPageCostOfCapitalCostOfDebtValue =
                 (EditText) this.findViewById(R.id.WACCDetailedPageCostOfCapitalCostOfDebtValue);
+
+
+        WACCDetailedPageCostOfCapitalCostOfDebtValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus) {
+                    //SAVE THE DATA
+
+                    getWaccDetailedObject().setRiskFreeRate(
+                            Double.valueOf(WACCDetailedPageCostOfCapitalCostOfDebtValue
+                                    .getText().toString()));
+                    //Log.d("TEST", getWaccDetailedObject().getCompanyName());
+                }
+            }
+        });
 
 
         //Weighted average cost of capital
@@ -178,6 +222,20 @@ public class WACCDetailedPageCostOfCapitalTwo extends NavBarAndTitle {
                 (EditText) this.findViewById(R.id
                         .WACCDetailedPageCostOfCapitalWeightedAverageCostOfCapitalValue);
 
+        WACCDetailedPageCostOfCapitalWeightedAverageCostOfCapitalValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus) {
+                    //SAVE THE DATA
+
+                    getWaccDetailedObject().setRiskFreeRate(
+                            Double.valueOf(WACCDetailedPageCostOfCapitalWeightedAverageCostOfCapitalValue
+                                    .getText().toString()));
+                    //Log.d("TEST", getWaccDetailedObject().getCompanyName());
+                }
+            }
+        });
+
         //Number of shares (millions)
         WACCDetailedPageCostOfCapitalNumberOfShares = (TextView)
                 this.findViewById(R.id. WACCDetailedPageCostOfCapitalNumberOfShares);
@@ -203,6 +261,21 @@ public class WACCDetailedPageCostOfCapitalTwo extends NavBarAndTitle {
         WACCDetailedPageCostOfCapitalNumberOfSharesValue =
                 (EditText) this.findViewById(R.id
                         .WACCDetailedPageCostOfCapitalNumberOfSharesValue);
+
+
+        WACCDetailedPageCostOfCapitalNumberOfSharesValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus) {
+                    //SAVE THE DATA
+
+                    getWaccDetailedObject().setRiskFreeRate(
+                            Double.valueOf(WACCDetailedPageCostOfCapitalNumberOfSharesValue
+                                    .getText().toString()));
+                    //Log.d("TEST", getWaccDetailedObject().getCompanyName());
+                }
+            }
+        });
 
     }
 }

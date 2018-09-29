@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -32,7 +33,7 @@ public class WACCDetailedPageModelInputsTwo extends NavBarAndTitle {
     private TextView WACCDetailedPageModelInputsTwoBaseYearDepreciationValue;
 
 
-    //TODO add ability to pull data from website
+    //TODO add ability to pull data from website, intent.putExtra("flagExcelViewer", "false");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +84,22 @@ public class WACCDetailedPageModelInputsTwo extends NavBarAndTitle {
         WACCDetailedPageModelInputsTwoSGAValue
                 = (EditText) this.findViewById(R.id.WACCDetailedPageModelInputsTwoSGAValue);
 
+        //do error checking, implement Excel here
+
+        WACCDetailedPageModelInputsTwoSGAValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus) {
+                    //SAVE THE DATA
+
+
+                    getWaccDetailedObject().setSGAValue(Double.valueOf(WACCDetailedPageModelInputsTwoSGAValue.getText().toString()));
+                    //Log.d("TEST", getWaccDetailedObject().);
+                }
+
+            }
+        });
+
         //Initial EBIT
 
         WACCDetailedPageModelInputsTwoInitialEBIT
@@ -122,6 +139,22 @@ public class WACCDetailedPageModelInputsTwo extends NavBarAndTitle {
 
         WACCDetailedPageModelInputsTwoInitialEBITValue
                 = (EditText) this.findViewById(R.id.WACCDetailedPageModelInputsTwoInitialEBITValue);
+
+        WACCDetailedPageModelInputsTwoInitialEBITValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus) {
+                    //SAVE THE DATA
+
+
+                    getWaccDetailedObject()
+                            .setInitialEBIT(Double.
+                                    valueOf(WACCDetailedPageModelInputsTwoInitialEBITValue.getText().toString()));
+                    //Log.d("TEST", getWaccDetailedObject().);
+                }
+
+            }
+        });
 
 
         //Last-period EBIT
@@ -163,6 +196,24 @@ public class WACCDetailedPageModelInputsTwo extends NavBarAndTitle {
         WACCDetailedPageModelInputsTwoLastPeriodEBITValue
                 = (EditText) this.findViewById(R.id.WACCDetailedPageModelInputsTwoLastPeriodEBITValue);
 
+        WACCDetailedPageModelInputsTwoLastPeriodEBITValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus) {
+                    //SAVE THE DATA
+
+
+                    getWaccDetailedObject()
+                            .setLastYearEBIT(Double.
+                                    valueOf(
+                                            WACCDetailedPageModelInputsTwoLastPeriodEBITValue
+                                                    .getText().toString()));
+                    //Log.d("TEST", getWaccDetailedObject().);
+                }
+
+            }
+        });
+
 
         //Capital expenditure as % revenue
 
@@ -200,6 +251,27 @@ public class WACCDetailedPageModelInputsTwo extends NavBarAndTitle {
 
         });
 
+        WACCDetailedPageModelInputsTwoCapitalExpenditureValue
+                = (EditText) this.findViewById(R.id.WACCDetailedPageModelInputsTwoCapitalExpenditureValue);
+
+        WACCDetailedPageModelInputsTwoCapitalExpenditureValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus) {
+                    //SAVE THE DATA
+
+
+                    getWaccDetailedObject()
+                            .setCapitalExpenditure(Double.
+                                    valueOf(
+                                            WACCDetailedPageModelInputsTwoCapitalExpenditureValue
+                                                    .getText().toString()));
+                    //Log.d("TEST", getWaccDetailedObject().);
+                }
+
+            }
+        });
+
         //Operating NWC as % revenue
 
         WACCDetailedPageModelInputsTwoOperatingNWC = (TextView) this.findViewById(R.id.WACCDetailedPageModelInputsTwoOperatingNWC );
@@ -222,6 +294,24 @@ public class WACCDetailedPageModelInputsTwo extends NavBarAndTitle {
 
         WACCDetailedPageModelInputsTwoOperatingNWCValue
                 = (EditText) this.findViewById(R.id.WACCDetailedPageModelInputsTwoOperatingNWCValue);
+
+        WACCDetailedPageModelInputsTwoOperatingNWCValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus) {
+                    //SAVE THE DATA
+
+
+                    getWaccDetailedObject()
+                            .setOperatingNWC(Double.
+                                    valueOf(
+                                            WACCDetailedPageModelInputsTwoOperatingNWCValue
+                                                    .getText().toString()));
+                    //Log.d("TEST", getWaccDetailedObject().);
+                }
+
+            }
+        });
 
         //Straight-line depreciation rule
         //Straight-line method; Depreciation Expense = Depreciable Amount/ Useful Life
@@ -246,6 +336,24 @@ public class WACCDetailedPageModelInputsTwo extends NavBarAndTitle {
 
         WACCDetailedPageModelInputsTwoStraightLineYearsValue
                 = (EditText) this.findViewById(R.id.WACCDetailedPageModelInputsTwoStraightLineValue);
+
+        WACCDetailedPageModelInputsTwoStraightLineYearsValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus) {
+                    //SAVE THE DATA
+
+
+                    getWaccDetailedObject()
+                            .setStraightLineDepreciationYears(Integer.
+                                    valueOf(
+                                            WACCDetailedPageModelInputsTwoStraightLineYearsValue
+                                                    .getText().toString()));
+                    //Log.d("TEST", getWaccDetailedObject().);
+                }
+
+            }
+        });
 
         //Tax rate
 
@@ -286,6 +394,24 @@ public class WACCDetailedPageModelInputsTwo extends NavBarAndTitle {
         WACCDetailedPageModelInputsTwoTaxRateValue
                 = (EditText) this.findViewById(R.id.WACCDetailedPageModelInputsTwoTaxRateValue);
 
+        WACCDetailedPageModelInputsTwoTaxRateValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus) {
+                    //SAVE THE DATA
+
+
+                    getWaccDetailedObject()
+                            .setTaxRate(Double.
+                                    valueOf(
+                                            WACCDetailedPageModelInputsTwoTaxRateValue
+                                                    .getText().toString()));
+                    //Log.d("TEST", getWaccDetailedObject().);
+                }
+
+            }
+        });
+
         //Base year depreciation
 
         WACCDetailedPageModelInputsTwoBaseYearDepreciation = (TextView) this.findViewById(R.id.WACCDetailedPageModelInputsTwoBaseYearDepreciation);
@@ -324,6 +450,24 @@ public class WACCDetailedPageModelInputsTwo extends NavBarAndTitle {
 
         WACCDetailedPageModelInputsTwoBaseYearDepreciationValue
                 = (EditText) this.findViewById(R.id.WACCDetailedPageModelInputsTwoBaseYearDepreciationValue);
+
+        WACCDetailedPageModelInputsTwoBaseYearDepreciationValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus) {
+                    //SAVE THE DATA
+
+
+                    getWaccDetailedObject()
+                            .setBaseYearDepreciation(Double.
+                                    valueOf(
+                                            WACCDetailedPageModelInputsTwoBaseYearDepreciationValue
+                                                    .getText().toString()));
+                    //Log.d("TEST", getWaccDetailedObject().);
+                }
+
+            }
+        });
 
     }
 

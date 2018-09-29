@@ -3,21 +3,18 @@ package com.example.finance.googlesheetsexample;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import com.facebook.drawee.backends.pipeline.Fresco;
-
 public class WACCDetailedPageModelInputsOne extends NavBarAndTitle {
 
     private DrawerLayout mDrawerLayout;
     private TextView WACCDetailedPageModelInputsOneTitle;
-    private TextView WACCDetailedPageModelInputsOneCompanyNameInput;
+    private TextView WACCDetailedPageModelInputsOneCompanyNameValue;
     private TextView WACCDetailedPageModelInputsOneCompanyNameText;
     private TextView WACCDetailedPageModelInputsOneBaseYear;
     private TextView WACCDetailedPageModelInputsOneBaseYearValue;
@@ -56,7 +53,29 @@ public class WACCDetailedPageModelInputsOne extends NavBarAndTitle {
         WACCDetailedPageModelInputsOneCompanyNameText.setText("Company Name");
 
 
-        WACCDetailedPageModelInputsOneCompanyNameInput = (EditText) this.findViewById(R.id.WACCDetailedPageModelInputsOneCompanyNameInput);
+        WACCDetailedPageModelInputsOneCompanyNameValue = (EditText) this.findViewById(R.id.WACCDetailedPageModelInputsOneCompanyNameInput);
+
+
+
+        //do error checking, implement Excel here
+
+        WACCDetailedPageModelInputsOneCompanyNameValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if(!hasFocus) {
+                        //SAVE THE DATA
+
+                        getWaccDetailedObject().setCompanyName(WACCDetailedPageModelInputsOneCompanyNameValue.getText().toString());
+                        Log.d("TEST", getWaccDetailedObject().getCompanyName());
+                    }
+
+                }
+            });
+
+
+
+
+
 
 
         WACCDetailedPageModelInputsOneBaseYear = (TextView) this.findViewById(R.id.WACCDetailedPageModelInputsOneBaseYear);
@@ -77,7 +96,26 @@ public class WACCDetailedPageModelInputsOne extends NavBarAndTitle {
 
         });
 
-        WACCDetailedPageModelInputsOneBaseYearValue = (EditText) this.findViewById(R.id.WACCDetailedPageModelInputsOneBaseYearValue);
+
+        WACCDetailedPageModelInputsOneBaseYearValue = (EditText)
+                this.findViewById
+                        (R.id.
+                                WACCDetailedPageModelInputsOneBaseYearValue);
+
+        WACCDetailedPageModelInputsOneBaseYearValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus) {
+                    //SAVE THE DATA
+
+
+                    getWaccDetailedObject().setBaseYear(Integer.getInteger(
+                            WACCDetailedPageModelInputsOneBaseYearValue.getText().toString()));
+                    Log.d("TEST", String.valueOf(getWaccDetailedObject().getBaseYear()));
+                }
+
+            }
+        });
 
 
 
@@ -101,8 +139,28 @@ public class WACCDetailedPageModelInputsOne extends NavBarAndTitle {
 
         });
 
-        WACCDetailedPageModelInputsOneNumberForecastPeriodsValue = (EditText) this.findViewById
-                (R.id.WACCDetailedPageModelInputsOneNumberForecastPeriodsValue);
+
+        WACCDetailedPageModelInputsOneNumberForecastPeriodsValue = (EditText)
+                this.findViewById
+                        (R.id.
+                                WACCDetailedPageModelInputsOneNumberForecastPeriodsValue);
+
+        WACCDetailedPageModelInputsOneNumberForecastPeriodsValue
+                .setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus) {
+                    //SAVE THE DATA
+
+
+                    getWaccDetailedObject().setBaseYear(Integer.getInteger(
+                            WACCDetailedPageModelInputsOneNumberForecastPeriodsValue.getText().toString()));
+                    Log.d("TEST", String.valueOf(getWaccDetailedObject().getNumberOfForecastPeriods()));
+                }
+
+            }
+        });
+
 
 
         //Base year revenue input
@@ -125,8 +183,27 @@ public class WACCDetailedPageModelInputsOne extends NavBarAndTitle {
 
         });
 
+
+        WACCDetailedPageModelInputsOneBaseYearRevenueValue = (EditText)
+                this.findViewById
+                        (R.id.WACCDetailedPageModelInputsOneBaseYearRevenueValue);
+
+
         WACCDetailedPageModelInputsOneBaseYearRevenueValue
-                = (EditText) this.findViewById(R.id.WACCDetailedPageModelInputsOneBaseYearRevenueValue);
+                .setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+                    public void onFocusChange(View v, boolean hasFocus) {
+                        if(!hasFocus) {
+                            //SAVE THE DATA
+
+
+                            getWaccDetailedObject().setBaseRevenue(Integer.getInteger(
+                                    WACCDetailedPageModelInputsOneBaseYearRevenueValue.getText().toString()));
+                            Log.d("TEST", String.valueOf(getWaccDetailedObject().getNumberOfForecastPeriods()));
+                        }
+
+                    }
+                });
 
         //Annual revenue growth rate
 
@@ -164,8 +241,25 @@ public class WACCDetailedPageModelInputsOne extends NavBarAndTitle {
 
         });
 
+
+        WACCDetailedPageModelInputsOneAnnualRevenueGrowthRateValue = (EditText)
+                this.findViewById(R.id.WACCDetailedPageModelInputsOneAnnualRevenueGrowthRateValue);
+
         WACCDetailedPageModelInputsOneAnnualRevenueGrowthRateValue
-                = (EditText) this.findViewById(R.id.WACCDetailedPageModelInputsOneAnnualRevenueGrowthRateValue);
+                .setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+                    public void onFocusChange(View v, boolean hasFocus) {
+                        if(!hasFocus) {
+                            //SAVE THE DATA
+
+
+                            getWaccDetailedObject().setAnnualRevenueGrowthPercentage(Double.valueOf(
+                                    WACCDetailedPageModelInputsOneBaseYearRevenueValue.getText().toString()));
+                            Log.d("TEST", String.valueOf(getWaccDetailedObject().getNumberOfForecastPeriods()));
+                        }
+
+                    }
+                });
 
         //Revenue growth fade to terminal growth
 
@@ -180,9 +274,11 @@ public class WACCDetailedPageModelInputsOne extends NavBarAndTitle {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
                     WACCDetailedPageModelInputsOneAnnualRevenueGrowthRateToTerminalToggleButtonCondition = true;
+                    getWaccDetailedObject().setRevenueGrowthFadeToTerminalGrowth(true);
                 }
                 else{
                     WACCDetailedPageModelInputsOneAnnualRevenueGrowthRateToTerminalToggleButtonCondition = false;
+                    getWaccDetailedObject().setRevenueGrowthFadeToTerminalGrowth(false);
                 }
             }
 
@@ -226,8 +322,24 @@ public class WACCDetailedPageModelInputsOne extends NavBarAndTitle {
 
         });
 
+        WACCDetailedPageModelInputsOneCostGoodsSoldValue = (EditText) this.findViewById(R.id.WACCDetailedPageModelInputsOneCostGoodsSoldValue);
+
+
         WACCDetailedPageModelInputsOneCostGoodsSoldValue
-                = (EditText) this.findViewById(R.id.WACCDetailedPageModelInputsOneCostGoodsSoldValue);
+                .setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+                    public void onFocusChange(View v, boolean hasFocus) {
+                        if(!hasFocus) {
+                            //SAVE THE DATA
+
+
+                            getWaccDetailedObject().setCostOfGoodsSoldAsPercentage(Double.valueOf(
+                                    WACCDetailedPageModelInputsOneCostGoodsSoldValue.getText().toString()));
+                            Log.d("TEST", String.valueOf(getWaccDetailedObject().getCostOfGoodsSoldAsPercentage()));
+                        }
+
+                    }
+                });
 
 
 

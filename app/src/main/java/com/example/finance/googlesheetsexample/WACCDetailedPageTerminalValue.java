@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -75,6 +76,18 @@ public class WACCDetailedPageTerminalValue extends NavBarAndTitle {
         WACCDetailedPageTerminalValueTerminalROICValue =
                 (EditText) this.findViewById(R.id.WACCDetailedPageTerminalValueTerminalROICValue);
 
+        WACCDetailedPageTerminalValueTerminalROICValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus) {
+                    //SAVE THE DATA
+
+                    getWaccDetailedObject().setTerminalROIC(Double.valueOf(WACCDetailedPageTerminalValueTerminalROICValue.getText().toString()));
+                    Log.d("TEST", getWaccDetailedObject().getCompanyName());
+                }
+
+            }
+        });
 
         // Terminal reinvestment rate
 
@@ -112,6 +125,21 @@ public class WACCDetailedPageTerminalValue extends NavBarAndTitle {
         WACCDetailedPageTerminalValueTerminalReinvestmentRateValue =
                 (EditText) this.findViewById(R.id.WACCDetailedPageTerminalValueTerminalReinvestmentRateValue);
 
+
+        WACCDetailedPageTerminalValueTerminalReinvestmentRateValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus) {
+                    //SAVE THE DATA
+
+                    getWaccDetailedObject().setTerminalReinvestmentRate(
+                            Double.valueOf(WACCDetailedPageTerminalValueTerminalReinvestmentRateValue
+                                    .getText().toString()));
+                    Log.d("TEST", getWaccDetailedObject().getCompanyName());
+                }
+
+            }
+        });
 
         // Terminal growth rate (g: %)
 
@@ -157,6 +185,23 @@ public class WACCDetailedPageTerminalValue extends NavBarAndTitle {
         WACCDetailedPageTerminalValueTerminalGrowthRateValue =
                 (EditText) this.findViewById(R.id.WACCDetailedPageTerminalValueTerminalGrowthRateValue);
 
+        WACCDetailedPageTerminalValueTerminalGrowthRateValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus) {
+                    //SAVE THE DATA
+
+                    getWaccDetailedObject().setTerminalReinvestmentRate(
+                            Double.valueOf(WACCDetailedPageTerminalValueTerminalGrowthRateValue
+                                    .getText().toString()));
+                    Log.d("TEST", getWaccDetailedObject().getCompanyName());
+                }
+
+            }
+        });
+
+
+
         //Terminal WACC
 
 
@@ -189,6 +234,21 @@ public class WACCDetailedPageTerminalValue extends NavBarAndTitle {
 
         WACCDetailedPageTerminalValueTerminalWACCValue =
                 (EditText) this.findViewById(R.id.WACCDetailedPageTerminalValueTerminalWACCValue);
+
+        WACCDetailedPageTerminalValueTerminalWACCValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus) {
+                    //SAVE THE DATA
+
+                    getWaccDetailedObject().setTerminalReinvestmentRate(
+                            Double.valueOf(WACCDetailedPageTerminalValueTerminalWACCValue
+                                    .getText().toString()));
+                    Log.d("TEST", getWaccDetailedObject().getCompanyName());
+                }
+
+            }
+        });
 
     }
 
