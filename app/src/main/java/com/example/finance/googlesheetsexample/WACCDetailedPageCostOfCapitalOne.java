@@ -27,6 +27,8 @@ public class WACCDetailedPageCostOfCapitalOne extends NavBarAndTitle {
     private TextView WACCDetailedPageCostOfCapitalRiskFreeRateValue;
     private TextView WACCDetailedPageCostOfCapitalMarketRiskPremiumValue;
 
+    //TODO Figure out how to add $ and percent lines to suggestive text for input without crashing
+    //TODO Figure out how to handle bad input, probably will involve a popup message
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +85,7 @@ public class WACCDetailedPageCostOfCapitalOne extends NavBarAndTitle {
                     //SAVE THE DATA
 
                     getWaccDetailedObject().setCash(
-                            Double.valueOf(WACCDetailedPageCostOfCapitalCashValue.getText().toString()));
+                            Double.parseDouble(WACCDetailedPageCostOfCapitalCashValue.getText().toString()));
                     //Log.d("TEST", getWaccDetailedObject().getCompanyName());
                 }
 

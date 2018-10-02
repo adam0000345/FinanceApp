@@ -15,133 +15,120 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/WACCDetailedResultsYearNumber"
             android:layout_width="104dp"
             android:layout_height="28dp"
             android:layout_marginStart="128dp"
             android:layout_marginEnd="128dp"
-            android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/WACCDetailedResultsRevenue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="42dp"
-            android:text="Revenue"
+            android:id="@+id/WACCDetailedResultsRevenueNumber"
+            android:layout_width="114dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="52dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/WACCDetailedResultsCostOfGoods"
+            android:id="@+id/WACCDetailedResultsCostOfGoodsNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Cost Of Goods Sold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/WACCDetailedResultsRevenue" />
+            app:layout_constraintTop_toBottomOf="@+id/WACCDetailedResultsRevenueNumber" />
 
         <TextView
-            android:id="@+id/WACCDetailedPageResultsSGA"
+            android:id="@+id/WACCDetailedPageResultsSGANumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="SGA and R+D"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/WACCDetailedResultsCostOfGoods" />
+            app:layout_constraintTop_toBottomOf="@+id/WACCDetailedResultsCostOfGoodsNumber" />
 
         <TextView
-            android:id="@+id/WACCDetailedResultsEBIT"
+            android:id="@+id/WACCDetailedResultsEBITNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="EBIT (Operating Income)"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/WACCDetailedPageResultsSGA" />
+            app:layout_constraintTop_toBottomOf="@+id/WACCDetailedPageResultsSGANumber" />
 
         <TextView
-            android:id="@+id/WACCDetailedResultsDepreciation"
+            android:id="@+id/WACCDetailedResultsDepreciationNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Depreciation"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/WACCDetailedResultsEBIT" />
+            app:layout_constraintTop_toBottomOf="@+id/WACCDetailedResultsEBITNumber" />
 
         <TextView
-            android:id="@+id/WACCDetailedResultsOperatingCashFlow"
+            android:id="@+id/WACCDetailedResultsOperatingCashFlowNumber"
             android:layout_width="wrap_content"
             android:layout_height="32dp"
             android:layout_marginTop="10dp"
-            android:text="Operating Cash Flow (OCF)"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/WACCDetailedResultsDepreciation" />
+            app:layout_constraintTop_toBottomOf="@+id/WACCDetailedResultsDepreciationNumber" />
 
         <TextView
-            android:id="@+id/WACCDetailedResultsCashExpenditure"
+            android:id="@+id/WACCDetailedResultsCashExpenditureNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Cash Expenditure"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/WACCDetailedResultsOperatingCashFlow" />
+            app:layout_constraintTop_toBottomOf="@+id/WACCDetailedResultsOperatingCashFlowNumber" />
 
         <TextView
-            android:id="@+id/WACCDetailedResultsChangeInNetWorkingCapital"
+            android:id="@+id/WACCDetailedResultsChangeInNetWorkingCapitalNumber"
             android:layout_width="169dp"
             android:layout_height="45dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="28dp"
             android:inputType="textMultiLine"
             android:minLines="2"
             android:scrollHorizontally="false"
-            android:text="Change in Net\nWorking Capital"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/WACCDetailedResultsCashExpenditure" />
+            app:layout_constraintTop_toBottomOf="@+id/WACCDetailedResultsCashExpenditureNumber" />
 
         <TextView
-            android:id="@+id/WACCDetailedResultsFreeCashFlow"
+            android:id="@+id/WACCDetailedResultsFreeCashFlowNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="9dp"
-            android:text="Free Cash Flow (FCFF)"
-            app:layout_constraintBottom_toTopOf="@+id/WACCDetailedResultsWACC"
+            app:layout_constraintBottom_toTopOf="@+id/WACCDetailedResultsWACCNumber"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/WACCDetailedResultsChangeInNetWorkingCapital" />
+            app:layout_constraintTop_toBottomOf="@+id/WACCDetailedResultsChangeInNetWorkingCapitalNumber" />
 
         <TextView
-            android:id="@+id/WACCDetailedResultsWACC"
+            android:id="@+id/WACCDetailedResultsWACCNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="WACC"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/WACCDetailedResultsFreeCashFlow" />
+            app:layout_constraintTop_toBottomOf="@+id/WACCDetailedResultsFreeCashFlowNumber" />
 
         <TextView
-            android:id="@+id/WACCDetailedResultsDiscountFactor"
+            android:id="@+id/WACCDetailedResultsDiscountFactorNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="10dp"
-            android:text="Discount Factor"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/WACCDetailedResultsWACC" />
+            app:layout_constraintTop_toBottomOf="@+id/WACCDetailedResultsWACCNumber" />
 
         <TextView
-            android:id="@+id/WACCDetailedResultsPV"
+            android:id="@+id/WACCDetailedResultsPVNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="60dp"
-            android:text="PV(FCFF)"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/WACCDetailedResultsDiscountFactor"
+            app:layout_constraintTop_toBottomOf="@+id/WACCDetailedResultsDiscountFactorNumber"
             app:layout_constraintVertical_bias="0.0" />
 
         <Button

@@ -109,7 +109,7 @@ public class WACCDetailedPageModelInputsOne extends NavBarAndTitle {
                     //SAVE THE DATA
 
 
-                    getWaccDetailedObject().setBaseYear(Integer.getInteger(
+                    getWaccDetailedObject().setBaseYear(Integer.parseInt(
                             WACCDetailedPageModelInputsOneBaseYearValue.getText().toString()));
                     Log.d("TEST", String.valueOf(getWaccDetailedObject().getBaseYear()));
                 }
@@ -153,7 +153,7 @@ public class WACCDetailedPageModelInputsOne extends NavBarAndTitle {
                     //SAVE THE DATA
 
 
-                    getWaccDetailedObject().setBaseYear(Integer.getInteger(
+                    getWaccDetailedObject().setBaseYear(Integer.parseInt(
                             WACCDetailedPageModelInputsOneNumberForecastPeriodsValue.getText().toString()));
                     Log.d("TEST", String.valueOf(getWaccDetailedObject().getNumberOfForecastPeriods()));
                 }
@@ -197,7 +197,7 @@ public class WACCDetailedPageModelInputsOne extends NavBarAndTitle {
                             //SAVE THE DATA
 
 
-                            getWaccDetailedObject().setBaseRevenue(Integer.getInteger(
+                            getWaccDetailedObject().setBaseRevenue(Double.parseDouble(
                                     WACCDetailedPageModelInputsOneBaseYearRevenueValue.getText().toString()));
                             Log.d("TEST", String.valueOf(getWaccDetailedObject().getNumberOfForecastPeriods()));
                         }

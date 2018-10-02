@@ -6,6 +6,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 
@@ -34,6 +36,20 @@ public class WACCDetailedPageResults extends NavBarAndTitle {
     private RecyclerView.Adapter mAdapter;
     private ArrayList<String> data;
 
+    private TextView WACCDetailedResultsYearNumber;
+    private TextView WACCDetailedResultsRevenueNumber;
+    private TextView WACCDetailedResultsCostOfGoodsNumber;
+    private TextView WACCDetailedResultsSGANumber;
+    private TextView WACCDetailedResultsEBITNumber;
+    private TextView WACCDetailedResultsDepreciationNumber;
+    private TextView WACCDetailedResultsOperatingCashFlowNumber;
+    private TextView WACCDetailedResultsCashExpenditureNumber;
+    private TextView WACCDetailedResultsChangeInNetWorkingCapitalNumber;
+    private TextView WACCDetailedResultsFreeCashFlowNumber;
+    private TextView WACCDetailedResultsWACCNumber;
+    private TextView WACCDetailedResultsDiscountFactorNumber;
+    private TextView WACCDetailedResultsPVNumber;
+
 
 
     //decided to use card views instead of layout views
@@ -47,10 +63,7 @@ public class WACCDetailedPageResults extends NavBarAndTitle {
         super.onCreate(savedInstanceState);
 
 
-        data = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            data.add("New Number" + i);
-        }
+
 
 
         getLayoutInflater().inflate(R.layout.waccdetailedpageresults, frameLayout);
@@ -71,6 +84,13 @@ public class WACCDetailedPageResults extends NavBarAndTitle {
 
         //http://people.stern.nyu.edu/adamodar/pdfiles/eqnotes/valenhdcf.pdf8
 
+        data = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            TextView WACCDetailedResultsYearNumber =
+                    this.findViewById(R.id.WACCDetailedResultsYearNumber);
+            //data.add("New Number" + i);
+        }
+
 
 
 
@@ -79,6 +99,14 @@ public class WACCDetailedPageResults extends NavBarAndTitle {
 
         for (int currentyear=0; currentyear<getWaccDetailedObject().getNumberOfForecastPeriods();
              currentyear++){
+
+            //set current year
+            TextView WACCDetailedResultsYearNumber =
+                    this.findViewById(R.id.WACCDetailedResultsYearNumber);
+            WACCDetailedResultsYearNumber.setText(String.valueOf(currentyear));
+
+            data.add(String.valueOf(currentyear));
+
 
             //handle Non-Working Capital calculation here
             if (currentyear == 0) {

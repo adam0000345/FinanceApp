@@ -82,8 +82,8 @@ public class WACCDetailedPageTerminalValue extends NavBarAndTitle {
                 if(!hasFocus) {
                     //SAVE THE DATA
 
-                    getWaccDetailedObject().setTerminalROIC(Double.valueOf(WACCDetailedPageTerminalValueTerminalROICValue.getText().toString()));
-                    Log.d("TEST", getWaccDetailedObject().getCompanyName());
+                    getWaccDetailedObject().setTerminalROIC(Double.parseDouble(WACCDetailedPageTerminalValueTerminalROICValue.getText().toString()));
+                    //Log.d("TEST", getWaccDetailedObject().getCompanyName());
                 }
 
             }
@@ -133,9 +133,9 @@ public class WACCDetailedPageTerminalValue extends NavBarAndTitle {
                     //SAVE THE DATA
 
                     getWaccDetailedObject().setTerminalReinvestmentRate(
-                            Double.valueOf(WACCDetailedPageTerminalValueTerminalReinvestmentRateValue
+                            Double.parseDouble(WACCDetailedPageTerminalValueTerminalReinvestmentRateValue
                                     .getText().toString()));
-                    Log.d("TEST", getWaccDetailedObject().getCompanyName());
+                    //Log.d("TEST", getWaccDetailedObject().getCompanyName());
                 }
 
             }
@@ -192,9 +192,9 @@ public class WACCDetailedPageTerminalValue extends NavBarAndTitle {
                     //SAVE THE DATA
 
                     getWaccDetailedObject().setTerminalReinvestmentRate(
-                            Double.valueOf(WACCDetailedPageTerminalValueTerminalGrowthRateValue
+                            Double.parseDouble(WACCDetailedPageTerminalValueTerminalGrowthRateValue
                                     .getText().toString()));
-                    Log.d("TEST", getWaccDetailedObject().getCompanyName());
+                    //Log.d("TEST", getWaccDetailedObject().getCompanyName());
                 }
 
             }
@@ -242,9 +242,9 @@ public class WACCDetailedPageTerminalValue extends NavBarAndTitle {
                     //SAVE THE DATA
 
                     getWaccDetailedObject().setTerminalReinvestmentRate(
-                            Double.valueOf(WACCDetailedPageTerminalValueTerminalWACCValue
+                            Double.parseDouble(WACCDetailedPageTerminalValueTerminalWACCValue
                                     .getText().toString()));
-                    Log.d("TEST", getWaccDetailedObject().getCompanyName());
+                    //Log.d("TEST", getWaccDetailedObject().getCompanyName());
                 }
 
             }

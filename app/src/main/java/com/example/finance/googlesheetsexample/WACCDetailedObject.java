@@ -12,10 +12,32 @@ public class WACCDetailedObject{
     private String CompanyName;
     private int BaseYear;
     private int NumberOfForecastPeriods;
-    private int BaseRevenue;
+    private double BaseRevenue;
     private double AnnualRevenueGrowthPercentage;
     private boolean RevenueGrowthFadeToTerminalGrowth;
     private double CostOfGoodsSoldAsPercentage;
+    private double Cash;
+    private double Debt;
+    private double MarketCapitalization;
+    private double EquityBeta;
+    private double RiskFreeRate;
+    private double MarketRiskPremium;
+    private double LeveredCostOfEquity;
+    private double CostOfDebt;
+    private double AverageCostOfCapital;
+    private int NumberOfShares;
+    private double TerminalROIC;
+    private double TerminalReinvestmentRate;
+    private double TerminalGrowthRate;
+    private double TerminalWACC;
+    private double SGAValue;
+    private double InitialEBIT;
+    private double LastYearEBIT;
+    private double CapitalExpenditure;
+    private double OperatingNWC;
+    private int StraightLineDepreciationYears;
+    private double TaxRate;
+    private double BaseYearDepreciation;
 
     public double getCash() {
         return Cash;
@@ -129,20 +151,7 @@ public class WACCDetailedObject{
         TerminalWACC = terminalWACC;
     }
 
-    private double Cash;
-    private double Debt;
-    private double MarketCapitalization;
-    private double EquityBeta;
-    private double RiskFreeRate;
-    private double MarketRiskPremium;
-    private double LeveredCostOfEquity;
-    private double CostOfDebt;
-    private double AverageCostOfCapital;
-    private int NumberOfShares;
-    private double TerminalROIC;
-    private double TerminalReinvestmentRate;
-    private double TerminalGrowthRate;
-    private double TerminalWACC;
+
 
 
 
@@ -214,15 +223,6 @@ public class WACCDetailedObject{
         BaseYearDepreciation = baseYearDepreciation;
     }
 
-    private double SGAValue;
-    private double InitialEBIT;
-    private double LastYearEBIT;
-    private double CapitalExpenditure;
-    private double OperatingNWC;
-    private int StraightLineDepreciationYears;
-    private double TaxRate;
-    private double BaseYearDepreciation;
-
 
     public String getDepreciationOption() {
         return DepreciationOption;
@@ -283,11 +283,11 @@ public class WACCDetailedObject{
         NumberOfForecastPeriods = numberOfForecastPeriods;
     }
 
-    public int getBaseRevenue() {
+    public double getBaseRevenue() {
         return BaseRevenue;
     }
 
-    public void setBaseRevenue(int baseRevenue) {
+    public void setBaseRevenue(double baseRevenue) {
         BaseRevenue = baseRevenue;
     }
 
