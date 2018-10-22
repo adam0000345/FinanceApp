@@ -75,7 +75,7 @@ public class WACCDetailedPageCostOfCapitalTwo extends NavBarAndTitle {
                 if(!hasFocus) {
                     //SAVE THE DATA
 
-                    getWaccDetailedObject().setRiskFreeRate(
+                    getWaccDetailedObject().setMarketRiskPremium(
                             Double.valueOf(WACCDetailedPageCostOfCapitalMarketRiskPremiumValue
                                     .getText().toString()));
                     //Log.d("TEST", getWaccDetailedObject().getCompanyName());
@@ -123,7 +123,7 @@ public class WACCDetailedPageCostOfCapitalTwo extends NavBarAndTitle {
                 if(!hasFocus) {
                     //SAVE THE DATA
 
-                    getWaccDetailedObject().setRiskFreeRate(
+                    getWaccDetailedObject().setLeveredCostOfEquity(
                             Double.valueOf(WACCDetailedPageCostOfCapitalLeveredCostOfEquityValue
                                     .getText().toString()));
                     //Log.d("TEST", getWaccDetailedObject().getCompanyName());
@@ -170,7 +170,7 @@ public class WACCDetailedPageCostOfCapitalTwo extends NavBarAndTitle {
                 if(!hasFocus) {
                     //SAVE THE DATA
 
-                    getWaccDetailedObject().setRiskFreeRate(
+                    getWaccDetailedObject().setCostOfDebt(
                             Double.valueOf(WACCDetailedPageCostOfCapitalCostOfDebtValue
                                     .getText().toString()));
                     //Log.d("TEST", getWaccDetailedObject().getCompanyName());
@@ -228,7 +228,7 @@ public class WACCDetailedPageCostOfCapitalTwo extends NavBarAndTitle {
                 if(!hasFocus) {
                     //SAVE THE DATA
 
-                    getWaccDetailedObject().setRiskFreeRate(
+                    getWaccDetailedObject().setWACC(
                             Double.valueOf(WACCDetailedPageCostOfCapitalWeightedAverageCostOfCapitalValue
                                     .getText().toString()));
                     //Log.d("TEST", getWaccDetailedObject().getCompanyName());
@@ -269,7 +269,7 @@ public class WACCDetailedPageCostOfCapitalTwo extends NavBarAndTitle {
                 if(!hasFocus) {
                     //SAVE THE DATA
 
-                    getWaccDetailedObject().setRiskFreeRate(
+                    getWaccDetailedObject().setNumberOfShares(
                             Double.valueOf(WACCDetailedPageCostOfCapitalNumberOfSharesValue
                                     .getText().toString()));
                     //Log.d("TEST", getWaccDetailedObject().getCompanyName());

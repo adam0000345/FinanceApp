@@ -56,7 +56,13 @@ public class WACCDetailedPageModelInputsTwo extends NavBarAndTitle {
             public void onClick(View v) {
                 Intent intent = new Intent(WACCDetailedPageModelInputsTwo.this, PopUpWindow.class);
 
-                intent.putExtra("message", "test");
+                intent.putExtra("isExcelPopup", "false");
+                intent.putExtra("message", "SG&A - selling, general, and administrative " +
+                        "expenditures or SGA - captures, in principle, the indirect costs of producing " +
+                        "and selling the company's goods and services. (R&D expenses are assumed to " +
+                        "be included, so if it is reported separately in the company's financial " +
+                        "statements, R&D should be included here.) In most financial reporting, SGA " +
+                        "typically includes the associated Depreciation (make in italics) charges.");
 
                 startActivity(intent);
 
@@ -112,9 +118,15 @@ public class WACCDetailedPageModelInputsTwo extends NavBarAndTitle {
             public void onClick(View v) {
                 Intent intent = new Intent(WACCDetailedPageModelInputsTwo.this, PopUpWindow.class);
 
-                intent.putExtra("message", "test");
+                intent.putExtra("isExcelPopup", "false");
+                intent.putExtra("message", "EBIT = Operating Income = Revenue - CGS - SGA " +
+                        "(if Depreciation (italics) is not already included in CGS and SGA, it has to be " +
+                        "subtracted). \n\n The input here is the percent operating margin for Year 1 " +
+                        "of the valuation. (Note that initial EBIT can be a negative number; in that event, " +
+                        "last-period EBIT as % revenue should be input as a positive number; see below.)");
 
                 startActivity(intent);
+
 
             }
 
@@ -168,7 +180,13 @@ public class WACCDetailedPageModelInputsTwo extends NavBarAndTitle {
             public void onClick(View v) {
                 Intent intent = new Intent(WACCDetailedPageModelInputsTwo.this, PopUpWindow.class);
 
-                intent.putExtra("message", "test");
+                intent.putExtra("isExcelPopup", "false");
+                intent.putExtra("message", "This is the targeted operating margin for the " +
+                        "last year of the forecast period.  The defualt value is set to the initial EBIT as " +
+                        "% revenue, but you can change it.  \n\n The model changes the percent operating margin " +
+                        "linearly between the first period and last.  It is, therefore, possible to model a " +
+                        "situation where the firm has negative initial EBIT but its EBIT grows positive over time" +
+                        " ; or the firm has a supra-normal initial EBIT but its EBIT declines over time.");
 
                 startActivity(intent);
 
@@ -226,7 +244,13 @@ public class WACCDetailedPageModelInputsTwo extends NavBarAndTitle {
             public void onClick(View v) {
                 Intent intent = new Intent(WACCDetailedPageModelInputsTwo.this, PopUpWindow.class);
 
-                intent.putExtra("message", "test");
+                intent.putExtra("isExcelPopup", "false");
+                intent.putExtra("message", "You have three choices for this input.  You " +
+                        "can divide the capital expenditure in the most recent period by revenues " +
+                        "and use the value; while simple, it could be affected by unusually high or low" +
+                        " numbers in the base year.  You can choose an average value over 3-5 years to smooth " +
+                        "the input.  Or, you can use an industry average. (If you are using the Cash Flow " +
+                        "Statement to get this number, know that is may how up with a negative sign!).");
 
                 startActivity(intent);
 
@@ -284,7 +308,23 @@ public class WACCDetailedPageModelInputsTwo extends NavBarAndTitle {
             public void onClick(View v) {
                 Intent intent = new Intent(WACCDetailedPageModelInputsTwo.this, PopUpWindow.class);
 
-                intent.putExtra("message", "test");
+                intent.putExtra("isExcelPopup", "false");
+                intent.putExtra("message", "Operating net working capital (NWC) is " +
+                        "the non-cash (needs to be underlined) current assets minus non-debt (underlined) " +
+                        "current liabilities.  You can use the last year's number, or a 'normalized' " +
+                        "number for your company over time, or an industry average.\n\n" +
+                        "In principle, NWC can be negative (i.e., a source of cash) if non-cash " +
+                        "current assets are smaller than the non-debt current liabilities.  In our " +
+                        "model, we do not allow negative NWC.  The reason is, allowing negative NWC " +
+                        "to grow over time (as revenue grows) can not only inflate cash flows forecasts, " +
+                        "but also make accounts payable unsustainable thereby impacting credit risk.  " +
+                        "Hence, we put a floor of zero for this input.  \n\n" +
+                        "When inputting the assumption for 'Operating NWC as % revenue', " +
+                        "note that you are inputting the percentage for total (i.e., not " +
+                        "incremental) revenue for the forecasted year.  In other words, the " +
+                        "input you provide will calculate the total NWC for the year, based on" +
+                        " which, the model will calculate the Change in NWC.");
+
 
                 startActivity(intent);
 
@@ -325,7 +365,8 @@ public class WACCDetailedPageModelInputsTwo extends NavBarAndTitle {
             public void onClick(View v) {
                 Intent intent = new Intent(WACCDetailedPageModelInputsTwo.this, PopUpWindow.class);
 
-                intent.putExtra("message", "test");
+                intent.putExtra("isExcelPopup", "false");
+                intent.putExtra("message", ".");
 
                 startActivity(intent);
 

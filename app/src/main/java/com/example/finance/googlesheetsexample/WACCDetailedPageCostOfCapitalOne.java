@@ -175,7 +175,7 @@ public class WACCDetailedPageCostOfCapitalOne extends NavBarAndTitle {
                 if(!hasFocus) {
                     //SAVE THE DATA
 
-                    getWaccDetailedObject().setDebt(
+                    getWaccDetailedObject().setMarketCapitalization(
                             Double.valueOf(WACCDetailedPageCostOfCapitalMarketCapValue.getText().toString()));
                     //Log.d("TEST", getWaccDetailedObject().getCompanyName());
                 }

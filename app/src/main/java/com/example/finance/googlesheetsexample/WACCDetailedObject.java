@@ -25,10 +25,12 @@ public class WACCDetailedObject{
     private double LeveredCostOfEquity;
     private double CostOfDebt;
     private double AverageCostOfCapital;
-    private int NumberOfShares;
+    private double NumberOfShares;
     private double TerminalROIC;
     private double TerminalReinvestmentRate;
     private double TerminalGrowthRate;
+
+    private double WACC;
     private double TerminalWACC;
     private double SGAValue;
     private double InitialEBIT;
@@ -111,11 +113,11 @@ public class WACCDetailedObject{
         AverageCostOfCapital = averageCostOfCapital;
     }
 
-    public int getNumberOfShares() {
+    public double getNumberOfShares() {
         return NumberOfShares;
     }
 
-    public void setNumberOfShares(int numberOfShares) {
+    public void setNumberOfShares(double numberOfShares) {
         NumberOfShares = numberOfShares;
     }
 
@@ -314,6 +316,14 @@ public class WACCDetailedObject{
 
     public void setCostOfGoodsSoldAsPercentage(double costOfGoodsSoldAsPercentage) {
         CostOfGoodsSoldAsPercentage = costOfGoodsSoldAsPercentage;
+    }
+
+    public double getWACC() {
+        return WACC;
+    }
+
+    public void setWACC(double WACC) {
+        this.WACC = WACC;
     }
 
 
